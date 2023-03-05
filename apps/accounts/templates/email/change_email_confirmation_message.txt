@@ -1,0 +1,8 @@
+{% load i18n %}
+{% blocktrans with site_name=site_name %}Hello from {{ site_name }} !{% endblocktrans %}
+
+{% block content %}{% autoescape off %}{% blocktrans %}You're receiving this e-mail because user {{ user }} has request change the email in {{ site_name }} by {{ email }} and required be confirmed.
+
+To confirm this is correct, go to {{ activate_url }}{% endblocktrans %}{% endautoescape %}{% endblock %}
+
+{% blocktrans with site_name=site_name %}Thank you for using {{ site_name }} !{% endblocktrans %}

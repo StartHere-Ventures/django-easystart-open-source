@@ -1,0 +1,182 @@
+# This file is distributed under the same license as the Django package.
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: django\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-15 09:00+0100\n"
+"PO-Revision-Date: 2021-02-11 05:37+0000\n"
+"Last-Translator: Uriel Medina <urimeba511@gmail.com>\n"
+"es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Layout, javascript-format
+msgid "Home"
+msgstr "Inicio"
+
+msgid "Setting"
+msgstr "Configuración"
+
+msgid "Help"
+msgstr "Ayuda"
+
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+msgid "Search"
+msgstr "Buscar"
+
+msgid "Profile"
+msgstr "Perfil"
+
+msgid "System"
+msgstr "Sistema"
+
+msgid "Notifications"
+msgstr "Notificaciones"
+
+# Dashboard/Index, javascript-format
+msgid "Welcome to"
+msgstr "Bienvenido a"
+
+# Backend messagess
+msgid "This email already registered"
+msgstr "Este email se encuentra registrado"
+
+msgid "This email already verified"
+msgstr "Este email se encuentra verificado"
+
+msgid "A confirmation email has been send"
+msgstr "Se ha enviado un email de confirmación"
+
+msgid "Successful name change"
+msgstr "Cambio de nombre exitoso"
+
+msgid "Successful job title change"
+msgstr "Cambio de profesión exitoso"
+
+msgid "Successful photo change"
+msgstr "Cambio de foto exitoso"
+
+msgid "Photo successfully removed"
+msgstr "Foto eliminada correctamente"
+
+msgid "Successful language change"
+msgstr "Cambio de idioma exitoso"
+
+msgid "Successful country change"
+msgstr "Cambio de país exitoso"
+
+msgid "Successful date format change"
+msgstr "Cambio de formato de fecha exitoso"
+
+# Error Pages
+msgid "Go back home"
+msgstr "Ir al inicio"
+
+msgid "404 ERROR"
+msgstr "ERROR 404"
+
+msgid "Page not found"
+msgstr "Página no encontrada"
+
+msgid "Sorry, we couldn't find the page you're looking for"
+msgstr "Lo sentimos, no pudimos encontrar la página que estás buscando"
+
+msgid "500 ERROR"
+msgstr "ERROR 500"
+
+msgid "Internal server error"
+msgstr "Error interno en el servidor"
+
+msgid "Something went wrong. Don't worry, it's not you, it's us"
+msgstr "Algo salió mal. No te preocupes, no eres tú, somos nosotros"
+
+msgid "403 ERROR"
+msgstr "ERROR 403"
+
+msgid "Access forbidden"
+msgstr "Acceso no autorizado"
+
+msgid "You tried to access a page you did not have prior authorization for"
+msgstr "Intentó acceder a una página para la que no tenía autorización previa"
+
+msgid "400 ERROR"
+msgstr "ERROR 400"
+
+msgid "Bad request"
+msgstr "Solicitud incorrecta"
+
+msgid "Your request resulted in a error"
+msgstr "Su solicitud resultó en un error"
+
+msgid "Created"
+msgstr "Creado"
+
+msgid "Events"
+msgstr "Eventos"
+
+msgid "Params"
+msgstr "Parámetros"
+
+msgid "Devices"
+msgstr "Dispositivos"
+
+msgid "New Device or IP"
+msgstr "Nuevo dispositivo o IP"
+
+msgid "Enter the 7-digit authorization code sent to email registered"
+msgstr "Ingrese el código de autorización de 7 dígitos enviado al correo electrónico registrado"
+
+msgid "Authorization code is invalid. Please try again."
+msgstr "Código de autorización inválido. Por favor intente de nuevo."
+
+msgid "Device Management"
+msgstr "Gestión de Dispositivos"
+
+msgid "These devices are currently allowed to access your account."
+msgstr "Actualmente estos dispositivos pueden acceder a su cuenta."
+
+msgid "Device"
+msgstr "Dispositivo"
+
+msgid "IP Address"
+msgstr "Dirección IP"
+
+msgid "Delete Device"
+msgstr "Eliminar Dispositivo"
+
+msgid "Are you sure to delete this device?"
+msgstr "Estas seguro de eliminar este dispositivo?"
+
+msgid "Resend Email"
+msgstr "Reenviar Correo Electrónico"
+
+msgid "New Device and IP authorized"
+msgstr "Nuevo Dispositivo e IP autorizado"
+
+msgid "Device deleted"
+msgstr "Dispositivo eliminado"
+
+msgid "You can currently access your account with these social apps."
+msgstr "Actualmente puede acceder a su cuenta con estas socials apps."
+
+msgid "You can also enter your platform in the traditional way: Email/Password."
+msgstr "También puede ingresar a su plataforma de la forma tradicional: Email/Password." 
+
+msgid "If you have not set a password, go to the Password section."
+msgstr "Si no ha  seteado un password, vaya a la sección Contraseña."
+
+msgid "Delete Social App"
+msgstr "Eliminar Social App"
+
+msgid "Are you sure to delete this social app?"
+msgstr "¿Estas seguro de eliminar esta social app?"
+
+msgid "This provider already exist"
+msgstr "Este proveedor ya existe"

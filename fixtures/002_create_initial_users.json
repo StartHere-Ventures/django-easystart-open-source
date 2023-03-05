@@ -1,0 +1,61 @@
+[
+  {
+    "model": "core.customuser",
+    "pk": 1,
+    "fields": {
+      "first_name": "Admin",
+      "last_name": "Administrator",
+      "email": "admin@example.com",
+      "password": "pbkdf2_sha256$260000$b4mqCCExRAwNug5xU0eM0V$o9tXxCkzJ5Kasz4c8vGHf11Clga6UI9oyyBj5qoehBs=",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.customuser",
+    "pk": 2,
+    "fields": {
+      "first_name": "User",
+      "last_name": "Manager",
+      "email": "manager@test.com",
+      "password": "pbkdf2_sha256$260000$b4mqCCExRAwNug5xU0eM0V$o9tXxCkzJ5Kasz4c8vGHf11Clga6UI9oyyBj5qoehBs=",
+      "groups": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "core.customuser",
+    "pk": 3,
+    "fields": {
+      "first_name": "User",
+      "last_name": "Client",
+      "email": "client@test.com",
+      "password": "pbkdf2_sha256$260000$b4mqCCExRAwNug5xU0eM0V$o9tXxCkzJ5Kasz4c8vGHf11Clga6UI9oyyBj5qoehBs=",
+      "groups": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "accounts.emailaddress",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "email": "manager@test.com",
+      "verified": false,
+      "primary": false
+    }
+  },
+  {
+    "model": "accounts.emailaddress",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "email": "client@test.com",
+      "verified": false,
+      "primary": false
+    }
+  }
+]

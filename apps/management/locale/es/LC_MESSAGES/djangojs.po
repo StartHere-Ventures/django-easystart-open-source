@@ -1,0 +1,431 @@
+# This file is distributed under the same license as the Django package.
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: django\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-15 09:00+0100\n"
+"PO-Revision-Date: 2021-02-11 05:37+0000\n"
+"Last-Translator: Uriel Medina <urimeba511@gmail.com>\n"
+"es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Nav Bar
+msgid "Users"
+msgstr "Usuarios"
+
+msgid "User"
+msgstr "Usuario"
+
+msgid "User Create"
+msgstr "Crear Usuario"
+
+msgid "Site Notifications"
+msgstr "Notificaciones del Site"
+
+msgid "Account Settings"
+msgstr "Configuraciones de Cuenta"
+
+msgid "Global Settings"
+msgstr "Configuraciones Globales"
+
+# Users List
+msgid "Status"
+msgstr "Estatus"
+
+msgid "Showing"
+msgstr "Mostrando"
+
+msgid "to"
+msgstr "a"
+
+msgid "of"
+msgstr "de"
+
+msgid "results"
+msgstr "resultados"
+
+msgid "Previous"
+msgstr "Anterior"
+
+msgid "Next"
+msgstr "Siguiente"
+
+msgid "Active"
+msgstr "Activo"
+
+msgid "No active"
+msgstr "No activo"
+
+msgid "No data, try again"
+msgstr "Sin data, intenta de nuevo"
+
+msgid "User Detail"
+msgstr "Detalle de Usuario"
+
+msgid "Security"
+msgstr "Seguridad"
+
+msgid "Reset password or 2fa, and activate/disactivate user."
+msgstr "Resetear password o 2fa, y activar/desactivar usuario."
+
+msgid "Reset password"
+msgstr "Resetear contraseña"
+
+msgid "Activate"
+msgstr "Activar"
+
+msgid "Deactivate"
+msgstr "Desactivar"
+
+msgid "Reset"
+msgstr "Resetear"
+
+msgid "Send email"
+msgstr "Enviar email"
+
+msgid "Email sent"
+msgstr "Correo electrónico enviado"
+
+msgid "Successful status change"
+msgstr "Cambio de estatus exitoso"
+
+msgid "User Role"
+msgstr "Rol del Usuario"
+
+msgid "Successful role change"
+msgstr "Cambio de rol exitoso"
+
+msgid "Successful 2fa reset"
+msgstr "Reseteo del 2fa exitoso"
+
+msgid "You need activate 2fa for this action"
+msgstr "Necesitas activar 2fa para esta acción"
+
+# Notifications
+msgid "Notification"
+msgstr "Notificación"
+
+msgid "Message"
+msgstr "Mensaje"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Link"
+msgstr "Enlace"
+
+msgid "Text link"
+msgstr "Texto del enlace"
+
+msgid "Open in other tab"
+msgstr "Abrir en otra pestaña"
+
+msgid "Yes"
+msgstr "Sí"
+
+msgid "Add"
+msgstr "Agregar"
+
+msgid "This notification does not exist"
+msgstr "Esta notificación no existe"
+
+msgid "Edit Notification"
+msgstr "Editar Notificación"
+
+msgid "Delete"
+msgstr "Eliminar"
+
+msgid "Create"
+msgstr "Crear"
+
+msgid "New Notification"
+msgstr "Nueva Notificación"
+
+msgid "New"
+msgstr "Nuevo"
+
+msgid "Delete Notification"
+msgstr "Eliminar Notificación"
+
+msgid "Are you sure to delete this notification?"
+msgstr "¿Estas seguro de eliminar esta notificación?"
+
+# System settings
+msgid "Appearance"
+msgstr "Apariencia"
+
+msgid "Change the appearence of the app"
+msgstr "Cambie la apariencia de la aplicación"
+
+msgid "App name"
+msgstr "Nombre del app"
+
+msgid "App logo"
+msgstr "Logo del app"
+
+msgid "Recommended dimensions: 320 x 125"
+msgstr "Dimensiones recomendadas: 320 x 125"
+
+msgid "Successful name change"
+msgstr "Cambio de nombre exitoso"
+
+msgid "Successful logo change"
+msgstr "Cambio del logo exitoso"
+
+msgid "Logo successfully removed"
+msgstr "Logo eliminado satisfactoriamente"
+
+msgid "Set security values"
+msgstr "Establecer valores de seguridad"
+
+msgid "Session expiration time"
+msgstr "Tiempo de expiración de sessión"
+
+msgid "Expresed in minutes"
+msgstr "Expresado en minutos"
+
+msgid "Successful session expiration time change"
+msgstr "Cambio de tiempo de expiración de sesión exitoso"
+
+msgid "Your session has been closed due to inactivity"
+msgstr "Tu sesión se ha cerrado por inactividad"
+
+msgid "Enable Audit"
+msgstr "Habilitar Auditoría"
+
+msgid "Successful audit activation"
+msgstr "Activación de auditoría exitosa"
+
+msgid "Successful audit deactivation"
+msgstr "Desactivación de auditoría exitosa"
+
+msgid "Successful ip authorization activation"
+msgstr "Activación de autorización de IP exitosa"
+
+msgid "Successful ip authorization deactivation"
+msgstr "Desactivación de autorización de IP exitosa"
+
+msgid "Enable IP Authorization"
+msgstr "Habilitar Autorización de IP"
+
+msgid "Insert scripts into header and footer"
+msgstr "Inserta scripts en el header y footer"
+
+msgid "Scripts in Header"
+msgstr "Scrips en el Header"
+
+msgid "Scripts in Footer"
+msgstr "Scripts en el Footer"
+
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Scripts saved successfully"
+msgstr "Scripts guardados exitósamente"
+
+msgid "These script will be printed above the </body> tag"
+msgstr "Este script se imprimirá encima de la etiqueta </body>"
+
+msgid "These script will be printed in the <head> section"
+msgstr "Este script se imprimirá en la sección <head>"
+
+msgid "These script will be printed below the <body> tag"
+msgstr "Este script se imprimirá debajo de la etiqueta <body>"
+
+msgid "Scripts in Body"
+msgstr "Scripts en el Body"
+
+msgid "Configure social connections like Google and others"
+msgstr "Configurar social connections como Google y otras"
+
+msgid "Provider"
+msgstr "Proveedor"
+
+msgid "Delete Social Connection"
+msgstr "Eliminar Social Connection"
+
+msgid "Are you sure to delete this social connection?"
+msgstr "¿Esta seguro que desea eliminar este social connection?"
+
+msgid "Email provider deactive"
+msgstr "Proveedor de email desactivado"
+
+msgid "Email provider active"
+msgstr "Proveedor de email activado"
+
+msgid "Email Provider"
+msgstr "Proveedor de Correo"
+
+msgid "Enable email provider"
+msgstr "Habilitar proveedor de correo"
+
+msgid "New Email Provider"
+msgstr "Nuevo Proveedor de Correo"
+
+msgid "Edit Email Provider"
+msgstr "Editar Proveedor de Correo"
+
+msgid "Delete Email Provider"
+msgstr "Eliminar Proveedor de Correo Electrónico"
+
+msgid "Are you sure to delete this email provider?"
+msgstr "¿Estas seguro de querer eliminar este proveedor de correo?"
+
+msgid "Template Name"
+msgstr "Nombre del Template"
+
+msgid "Template ID"
+msgstr "ID del Template"
+
+msgid "Edit Template"
+msgstr "Editar Template"
+
+msgid "Delete Template"
+msgstr "Eliminar Template"
+
+msgid "Are you sure to delete this template?"
+msgstr "¿Estas seguro de querer eliminar este template?"
+
+msgid "Email Settings"
+msgstr "Configuraciones de Email"
+
+msgid "You can activate email providers"
+msgstr "Puede activar proveedores de correo electrónico"
+
+msgid "Registration Settings"
+msgstr "Configuración de Registro"
+
+msgid "You can activate/deactivate user registration"
+msgstr "Puede activar/desactivate el registro de usuarios"
+
+msgid "Enable user registration"
+msgstr "Habilitar registro de usuario"
+
+msgid "User registration active"
+msgstr "Registro de usuario activo"
+
+msgid "User registration deactive"
+msgstr "Registro de usuario desactivado"
+
+msgid "Enable Captcha"
+msgstr "Habilitar Captcha"
+
+msgid "Successful captcha activation"
+msgstr "Activación del captcha satisfactorio"
+
+msgid "Successful captcha deactivation"
+msgstr "Desactivación del captcha satisfactorio"
+
+msgid "Provider captcha successfully saved"
+msgstr "Proveedor captcha guardado satisfactoriamente"
+
+msgid "Provider captcha successfully removed"
+msgstr "Proveedor captcha eliminado satisfactoriamente"
+
+msgid "Captcha Provider"
+msgstr "Proveedor de Captcha"
+
+msgid "Configuration"
+msgstr "Configuración"
+
+msgid "Configure captcha provider like hCaptcha, Google and others"
+msgstr "Configura un proveedor de captcha como hCaptcha, Google y otros"
+
+msgid "Delete Captcha Provider"
+msgstr "Elminiar Proveedor de Captcha"
+
+msgid "Are you sure to delete this captcha provider?"
+msgstr "¿Esta seguro de eliminar este proveedor de captcha?"
+
+msgid "User Balance"
+msgstr "Balance del Usuario"
+
+msgid "Wallet module active"
+msgstr "Módulo billetera activo"
+
+msgid "Wallet module deactive"
+msgstr "Módulo billetera desactivo"
+
+msgid "Wallet Settings"
+msgstr "Configuración de Billetera"
+
+msgid "You can activate/deactivate wallet module"
+msgstr "Usted puede activar/desactivar el módulo de billetera"
+
+msgid "Enable wallet module"
+msgstr "Habilitar el módulo billetera"
+
+msgid "Enable 2FA"
+msgstr "Habilitar 2FA"
+
+msgid "Successful 2FA activation"
+msgstr "Activación del 2FA exitoso"
+
+msgid "Successful 2FA deactivation"
+msgstr "Desactivación del 2FA exitoso" 
+
+msgid "Groups and Permissions"
+msgstr "Grupos y Permisos"
+
+msgid "Create Group"
+msgstr "Crear Grupo"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Permissions List"
+msgstr "Lista de Permisos"
+
+msgid "Update Group"
+msgstr "Actualizar Grupo"
+
+msgid "Delete Group"
+msgstr "Eliminar Grupo"
+
+msgid "Clone Group"
+msgstr "Clonar Grupo"
+
+msgid "You are going to clone the group 'Management'. All permissions associated with it will be copied to this new group."
+msgstr "Vas a clonar el grupo 'Administrador'. Todos los permisos asociados con él se copiarán en este nuevo grupo."
+
+msgid "Name Group"
+msgstr "Nombre del grupo"
+
+msgid "Group"
+msgstr "Grupo"
+
+msgid "Are you sure to delete this group?"
+msgstr "Estas seguro de eliminar este grupo?"
+
+msgid "can't delete default groups"
+msgstr "no se pueden eliminar los grupos default"
+
+msgid "cannot delete groups with active users"
+msgstr "no se pueden eliminar grupos con usuarios activos"
+
+msgid "can't update name default groups"
+msgstr "no se puede actualizar el nombre de los grupos default"
+
+msgid "This Group already exist"
+msgstr "Este grupo ya existe"
+
+msgid "Group successfully create"
+msgstr "Grupo creado con éxito"
+
+msgid "This group does not exist"
+msgstr "Este grupo no existe"
+
+msgid "Successful permissions change"
+msgstr "Cambio de permisos exitoso"
+
+msgid "Group successfully removed"
+msgstr "Grupo eliminado con éxito"
+
+msgid "Successful permissions clone"
+msgstr "Clonado de permisos exitoso"

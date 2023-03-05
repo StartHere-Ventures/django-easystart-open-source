@@ -1,0 +1,27 @@
+{% load render_bundle from webpack_loader %}
+{% load static js_routes_tags js_translation_tags scripts_in_header scripts_in_footer scripts_in_body %}
+<!DOCTYPE html>
+<html  class="h-full bg-gray-200" lang='en'>
+  <head>
+    <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <script src="{% static 'js/routes/resolver.js' %}"></script>
+    <title>Easystart</title>
+
+    {% js_translation %}
+    {% js_routes routes_only=True %}
+    {% header_scripts %}
+    
+    {% render_bundle 'main' 'css' %}
+  </head>
+  <body class="font-sans leading-none text-gray-700 antialiased">
+    {% body_scripts %}
+    {% csrf_token %}
+    {{ page|json_script:"page" }}
+    <div id="app"></div>
+    {% render_bundle 'main' 'js' attrs='defer async' %}
+
+    {% footer_scripts %}
+  </body>
+</html>

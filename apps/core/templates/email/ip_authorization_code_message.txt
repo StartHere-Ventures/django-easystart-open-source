@@ -1,0 +1,15 @@
+{% load i18n %}
+{% blocktrans %}Hello from {{ site_name }}!{% endblocktrans %}
+
+{% block content %}
+{% blocktrans %}You recently attempted to sign in to {{ site_name }} account from a new device or ip address. As a security measure, we require additional confirmation before allowing access to your {{ site_name }} account.{% endblocktrans %}
+{% blocktrans with ip=ip device=device %}
+IP address: {{ ip }}
+Device: {{ device }}
+{% endblocktrans %}
+{% blocktrans %} If you recognize this activity, please confirm it with the activation code. Here is your account activation code:{% endblocktrans %} {{ code }}
+
+{% blocktrans %} If you don't recognize this activity, please disable your account and contact our customer support immediately.{% endblocktrans %}
+{% endblock %}
+
+{% blocktrans %}Thank you for using {{ site_name }}!{% endblocktrans %}

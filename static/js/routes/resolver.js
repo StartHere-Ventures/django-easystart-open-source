@@ -1,0 +1,38 @@
+window.routes = {"core:index": "/", "core:index_settings": "/index/settings", "core:settings": "/settings", "core:change_email": "/settings/change/email", "core:cancel_change_email": "/settings/cancel-change-email", "core:change_names": "/settings/change/names", "core:change_job_title": "/settings/change/job", "core:change_photo": "/settings/change/photo", "core:remove_photo": "/settings/remove/photo", "core:change_language": "/settings/change/language", "core:change_country": "/settings/change/country", "core:device_list": "/settings/devices", "core:login_connections": "/settings/login/connections", "core:change_date_format": "/settings/change/date-format", "core:ip_authorization": "/ip/authorization", "core:delete_device": "/device/delete/<device_id>", "core:delete_social_app": "/social_app/delete/<app_id>", "core:error_400": "/400", "core:error_403": "/403", "core:error_404": "/404", "core:error_500": "/500", "accounts:login": "/login", "accounts:logout": "/logout", "accounts:register": "/register", "accounts:email_verification_sent": "/email-verification-sent/", "accounts:confirm_email": "/confirm-email/<key>/", "accounts:reset_password": "/password/reset", "accounts:reset_password_from_key": "/password/reset/key/<uidb36>-<key>/", "accounts:change_password": "/settings/change/password", "accounts:resend_email_verification": "/resend-email-verification", "accounts:google_login": "/google/login/callback", "accounts:facebook_login": "/facebook/login/callback", "2fa:settings": "/settings/2fa", "2fa:setup_otp": "/settings/2fa/setup/otp", "2fa:remove_otp": "/settings/2fa/remove/otp", "2fa:auth_otp": "/2fa/auth/otp", "2fa:auth_recovery_words": "/2fa/auth/recovery/words", "2fa:validate_otp": "/2fa/verify/otp", "management:index": "/manage/", "management:users": "/manage/users", "management:user_detail": "/manage/user/<user_id>/", "management:user_change_names": "/manage/user/<user_id>/change/names", "management:user_change_job_title": "/manage/user/<user_id>/change/job", "management:user_change_photo": "/manage/user/<user_id>/change/photo", "management:user_remove_photo": "/manage/user/<user_id>/remove/photo", "management:user_change_language": "/manage/user/<user_id>/change/language", "management:user_change_country": "/manage/user/<user_id>/change/country", "management:user_change_date_format": "/manage/user/<user_id>/change/date-format", "management:change_user_groups": "/manage/user/<user_id>/change/group", "management:user_change_status": "/manage/user/<user_id>/change-status", "management:user_deactivate_tfa": "/manage/user/<user_id>/deactivate-tfa", "management:user_reset_password": "/manage/user/<user_id>/reset-password", "management:user_create": "/manage/users/create", "management:notifications": "/manage/notifications", "management:notification_create": "/manage/notifications/create", "management:notification_edit": "/manage/notifications/edit/<notification_id>/", "management:notification_delete": "/manage/notifications/delete/<notification_id>/", "management:email_provider": "/manage/email/provider", "management:email_providers_create": "/manage/email/provider/create", "management:email_provider_edit": "/manage/email/provider/edit/<email_provider_id>/", "management:email_provider_delete": "/manage/email/provider/delete/<email_provider_id>/", "management:provider_templates_list": "/manage/email/provider/template/<provider_id>/", "management:provider_template_create": "/manage/email/provider/template/create", "management:provider_template_edit": "/manage/email/provider/template/edit/<template_id>/", "management:provider_template_delete": "/manage/email/provider/template/delete/<template_id>/", "management:settings": "/manage/settings", "management:change_password": "/manage/settings/change/password", "management:login_connections": "/manage/settings/login/connections", "management:global_settings_general": "/manage/settings/global/general", "management:system_change_app_name": "/manage/settings/system/change/app-name", "management:system_change_app_logo": "/manage/settings/system/change/app-logo", "management:system_remove_app_logo": "/manage/settings/system/remove/app-logo", "management:global_settings_security": "/manage/settings/global/security", "management:system_change_session_expire_time": "/manage/settings/global/security/change/session-expire-time", "management:system_active_audit": "/manage/settings/global/security/active/audit", "management:global_settings_audit": "/manage/settings/global/audit", "management:system_active_ip_auth": "/manage/settings/global/security/active/ip_auth", "management:system_active_email_provider": "/manage/settings/global/security/active/email_provider", "management:global_settings_scripts": "/manage/settings/global/scripts", "management:device_list": "/manage/settings/devices", "management:delete_device": "/manage/device/delete/<device_id>", "management:global_settings_social_connections": "/manage/settings/global/social/connections", "management:global_settings_edit_social_app": "/manage/settings/global/social/connections/edit/<social_id>", "management:global_settings_delete_social_app": "/manage/settings/global/social/connections/delete/<social_id>", "management:global_settings_create_social_app": "/manage/settings/global/social/connections/create", "management:system_active_registration": "/manage/settings/global/active/registration", "management:system_active_captcha": "/manage/settings/global/security/active/captcha", "management:global_settings_provider_captcha": "/manage/settings/global/provider/captcha", "management:delete_provider_captcha": "/manage/settings/global/provider/captcha/delete", "management:system_active_wallet": "/manage/settings/global/active/wallet", "management:system_active_tfa": "/manage/settings/global/security/active/tfa", "management:list_group_general": "/manage/groups/list", "management:2fa_settings": "/manage/settings/2fa", "management:setup_otp": "/manage/settings/2fa/setup/otp", "management:remove_otp": "/manage/settings/2fa/remove/otp", "audit:logs_models_list": "/manage/audit/models", "audit:model_logs_list": "/manage/settings/global/audit/models", "audit:change_model_status": "/manage/audit/models/<model_id>/change/status", "audit:logs_urls_list": "/manage/audit/urls", "audit:urls_logs_list": "/manage/settings/global/audit/urls", "audit:change_url_status": "/manage/audit/url/<url_id>/change/status", "audit:change_strategy": "/manage/audit/change/url/log/strategy", "audit:logs_events_list": "/manage/audit/events", "wallet:balance": "/balance"};
+window.reverseUrl = function(urlName) {
+  var url = window.routes[urlName];
+  if (!url) {
+    throw "URL '" + urlName + "' was not found.";
+  }
+
+  const args = arguments;
+  const argTokens = url.match(/<\w*>/g);
+  if (!argTokens && args[1] !== undefined) {
+    throw "Invalid URL lookup: URL '" + urlName + "' does not expect any arguments.";
+  }
+
+  if (typeof (args[1]) == 'object' && !Array.isArray(args[1])) {
+    argTokens.forEach(function(token) {
+      const argName = token.slice(1, -1);
+      const argValue = args[1][argName];
+      if (argValue === undefined) {
+        throw "Invalid URL lookup: Argument '" + argName + "' was not provided.";
+      }
+
+      url = url.replace(token, argValue);
+    });
+  } else if (args[1] !== undefined) {
+    const argsArray = Array.isArray(args[1]) ? args[1] : Array.prototype.slice.apply(args, [1, args.length]);
+    if (argTokens.length !== argsArray.length) {
+      throw "Invalid URL lookup: Wrong number of arguments ; expected " + argTokens.length + " arguments.";
+    }
+
+    argTokens.forEach(function(token, i) {
+      const argValue = argsArray[i];
+      url = url.replace(token, argValue);
+    });
+  }
+
+  return url;
+};
+

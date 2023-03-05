@@ -1,0 +1,43 @@
+{% load static %}
+<html>
+  <head>
+    <title>reCAPTCHA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    {% if captchaSettings.provider == "google" %}
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    {% elif captchaSettings.provider == "hcaptcha" %}
+        <script src="https://hcaptcha.com/1/api.js" async defer></script>
+    {% endif %}
+  </head>
+  <body>
+    <div style="margin-top: 50px; margin-left: 20px">
+      <img src="{{ appLogo }}" style="display:block; margin: auto; width:200px;">
+      <form style="margin-top: 20px" action="?" method="POST">
+        {% if captchaSettings.provider == "google" %}
+            <div class="g-recaptcha" 
+                data-sitekey="{{ captchaSettings.configuration.sitekey }}"
+                data-size="normal"
+                data-callback="captchaCallback">
+            </div>
+        {% elif captchaSettings.provider == "hcaptcha" %}
+            <div class="h-captcha" 
+                data-sitekey="{{ captchaSettings.configuration.sitekey }}"
+                data-size="normal"
+                data-callback="captchaCallback">
+            </div>
+        {% endif %}
+      </form>
+      <a style="margin-top: 20px; text-decoration: none; display: block; text-align: center; color: #0369a1;" href="javascript:void" onclick="captchaCallback('')">
+        Return
+      </a>
+    </div>
+    <script>
+      function captchaCallback(response){
+        //console.log(response);
+        if(typeof Captcha!=="undefined"){
+          Captcha.postMessage(response);
+        }
+      }
+    </script>
+  </body>
+</html>

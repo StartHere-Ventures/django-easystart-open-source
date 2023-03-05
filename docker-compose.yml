@@ -1,0 +1,86 @@
+version: "3.8"
+
+services:
+  applocal:
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    image: django_easystart_app_local
+    # '/start' is the shell script used to run the service
+    command: sh /start.sh
+    # this volume is used to map the files and folders on the host to the container
+    # so if we change code on the host, code in the docker container will also be changed
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:8000"
+    # env_file is used to manage the env variables of our project
+    env_file:
+      - ./compose/.env/dev-sample
+    depends_on:
+      - db
+
+  celery_worker:
+    image: django_easystart_app_local
+    command: sh /start-celeryworker.sh
+    volumes:
+      - .:/app
+    env_file:
+      - ./compose/.env/dev-sample
+    depends_on:
+      - applocal
+
+  celery_beat:
+    image: django_easystart_app_local
+    command: sh /start-celerybeat.sh
+    volumes:
+      - .:/app
+    profiles:
+      - celery_beat
+    env_file:
+      - ./compose/.env/dev-sample
+    depends_on:
+      - applocal
+
+  flower:
+    image: django_easystart_app_local
+    command: sh /start-flower.sh
+    volumes:
+      - .:/app
+    env_file:
+      - ./compose/.env/dev-sample
+    ports:
+      - 5555:5555
+    depends_on:
+      - applocal
+
+  e2e:
+    build:
+      context: .
+      dockerfile: ./compose/cypress/Dockerfile
+    image: django_easystart_cypress_local
+    working_dir: /e2e
+    volumes:
+      - ./e2e:/e2e
+      - ./:/app
+    env_file:
+      - ./compose/.env/dev-sample
+    profiles:
+      - e2e_tests
+    depends_on:
+      - applocal
+
+  redis:
+    image: redis:7.0.3-alpine
+
+  db:
+    image: postgres:14.4-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=django_easystart_dev
+      - POSTGRES_USER=django_easystart
+      - POSTGRES_PASSWORD=django_easystart
+
+volumes:
+  postgres_data:

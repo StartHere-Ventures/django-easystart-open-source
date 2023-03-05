@@ -1,0 +1,281 @@
+# This file is distributed under the same license as the Django package.
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: django\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-15 09:00+0100\n"
+"PO-Revision-Date: 2021-02-11 05:37+0000\n"
+"Last-Translator: Uriel Medina <urimeba511@gmail.com>\n"
+"es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# LayoutSettings, javascript-format
+msgid "Password"
+msgstr "Contraseña"
+
+msgid "Update"
+msgstr "Actualizar"
+
+msgid "Change"
+msgstr "Cambiar"
+
+msgid "Remove"
+msgstr "Eliminar"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Profle"
+msgstr "Perfil"
+
+msgid "This information will be displayed publicly so be careful what you share."
+msgstr "Esta información se mostrará públicamente, así que tenga cuidado con lo que comparte."
+
+msgid "Email"
+msgstr "Correo Electrónico"
+
+msgid "Did not received confirmation email in"
+msgstr "¿No recibió el email de confirmación en"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "Photo"
+msgstr "Foto"
+
+msgid "Upload a file"
+msgstr "Subir un archivo"
+
+msgid "%(ext)s up to %(size)s MB"
+msgstr "%(ext)s hasta %(size)s MB"
+
+msgid "Job title"
+msgstr "Profesión"
+
+msgid "Account"
+msgstr "Cuenta"
+
+msgid "Manage how information is displayed on your account."
+msgstr "Administre cómo se muestra la información en su cuenta."
+
+msgid "Language"
+msgstr "Idioma"
+
+msgid "Country"
+msgstr "País"
+
+msgid "Date format"
+msgstr "Formato de fecha" 
+
+msgid "Change Password"
+msgstr "Cambiar Contraseña"
+
+msgid "Set up a new password"
+msgstr "Ingresar una nueva contraseña"
+
+msgid "To do this operation need confirm your email."
+msgstr "Para hacer esta operación necesita confirmar su email."
+
+msgid "Resend confirm email"
+msgstr "Reenviar correo de confirmación"
+
+msgid "Need to change your password? We will send you a link to reset it."
+msgstr "¿Necesitas cambiar tu contraseña? Le enviaremos un enlace para restablecerlo."
+
+msgid "Reset your password by email"
+msgstr "Restablezca su contraseña por correo electrónico"
+
+msgid "Email send successfully"
+msgstr "Correo enviado satisfactoriamente"
+
+msgid "Do you need wait 3 min to resend confirmation email"
+msgstr "Necesita esperar 3 min para reenviar el correo de confirmación"
+
+msgid "Your email has not been confirmed."
+msgstr "Su correo electrónico no ha sido confirmado."
+
+msgid "Oops, you don't have two factor authentication active. To configure it click"
+msgstr "Vaya, no tienes activa la autenticación de dos factores. Para configurarlo haga clic en"
+
+msgid "here"
+msgstr "aquí"
+
+# Accounts
+msgid "Sign in to your account"
+msgstr "Inicie sesión en su cuenta"
+
+msgid "Or"
+msgstr "O"
+
+msgid "register a new account"
+msgstr "registre una nueva cuenta"
+
+msgid "Remember me"
+msgstr "Recuérdame"
+
+msgid "Forgot your password?"
+msgstr "¿Olvidó su contraseña?"
+
+msgid "One lowercase character"
+msgstr "Una letra en minúscula"
+
+msgid "One uppercase character"
+msgstr "Un letra en mayúscula"
+
+msgid "One special character"
+msgstr "Un caracter especial"
+
+msgid "One number character"
+msgstr "Un número"
+
+msgid "8 characters minimun"
+msgstr "Mínimo 8 caracteres"
+
+msgid "Show"
+msgstr "Mostrar"
+
+msgid "Hide"
+msgstr "Ocultar"
+
+msgid "Sign in"
+msgstr "Iniciar sesión"
+
+msgid "Register a new account"
+msgstr "Registrar una nueva cuenta"
+
+msgid "First Name"
+msgstr "Nombre"
+
+msgid "Last Name"
+msgstr "Apellido"
+
+msgid "Register"
+msgstr "Registrar"
+
+msgid "Already have an account?"
+msgstr "¿Ya tienes una cuenta?"
+
+msgid "Sign in instead"
+msgstr "Inicie sesión"
+
+msgid "Value is required"
+msgstr "Es requerido"
+
+msgid "Value is not a valid email address"
+msgstr "No es un correo electrónico válido"
+
+msgid "Password Reset"
+msgstr "Restablecer Contraseña"
+
+msgid "Have you forgotten your password? Enter your email and we will send you an email that will allow you to reset it."
+msgstr "¿Has olvidado tu contraseña? Ingrese su correo electrónico y le enviaremos un correo electrónico que le permitirá restablecerlo."
+
+msgid "Send password reset email"
+msgstr "Enviar correo para restablecer el password"
+
+msgid "Set Password"
+msgstr "Cambiar Contraseña"
+
+msgid "The password reset token was invalid."
+msgstr "El token de restablecimiento de contraseña no es válido."
+
+msgid "Return to login"
+msgstr "Retornar al inicio de sesión"
+
+msgid "Reset Password"
+msgstr "Restablecer Contraseña"
+
+msgid "Email Verification"
+msgstr "Verificación de Correo Electrónico"
+
+msgid "Your email has not been verified."
+msgstr "Su correo electrónico no ha sido verificado."
+
+msgid "Remember that to access our platform you must perform this step first."
+msgstr "Recuerda que para acceder a nuestra plataforma debes realizar este paso primero."
+
+msgid "Enter the email associated with your account to resend the confirmation email."
+msgstr "Ingrese el correo electrónico asociado con su cuenta para reenviar el correo electrónico de confirmación."
+
+msgid "Resend"
+msgstr "Reenviar"
+
+msgid "Resend email"
+msgstr "Reenviar email"
+
+msgid "Cancel email change"
+msgstr "Cancelar cambio de email"
+
+msgid "Change email canceled"
+msgstr "Cambio de correo electrónico cancelado"
+
+msgid "This action required password"
+msgstr "Esta acción requiere password"
+
+msgid "Confirm Email"
+msgstr "Confirmación de Correo Electrónico"
+
+msgid "Your token is invalid or was expired."
+msgstr "Su token no es válido o ha caducado."
+
+msgid "To send another confirmation email, click"
+msgstr "Para enviar otro correo electrónico de confirmación, haga clic en"
+
+msgid "resend"
+msgstr "reenviar"
+
+# Backend messages
+
+msgid "Invalid email or password"
+msgstr "Correo electrónico o contraseña inválida"
+
+msgid "An email has been sent with instructions to reset your password"
+msgstr "Se ha enviado un correo electrónico con instrucciones para restablecer su contraseña."
+
+msgid "This email is not registered"
+msgstr "Este email no esta registrado"
+
+msgid "Exists errors on form"
+msgstr "Existe errores en el formulario"
+
+msgid "Not a valid email address."
+msgstr "No es un correo electrónico válido"
+
+msgid "Your password has been changed successfully"
+msgstr "Tu contraseña ha sido cambiada exitosamente"
+
+msgid "Password must contain at least 1 digit."
+msgstr "La contraseña debe contener al menos 1 dígito."
+
+msgid "Your password must contain at least one uppercase letter."
+msgstr "Su contraseña debe contener al menos una letra mayúscula."
+
+msgid "Your password must contain at least one lowercase letter."
+msgstr "Su contraseña debe contener al menos una letra minúscula."
+
+msgid "Your password must not contain spaces."
+msgstr "Su contraseña no debe contener espacios."
+
+msgid "Your password must contain at least special character like: ?!+-."
+msgstr "Su contraseña debe contener al menos un carácter especial como: ?!+-."
+
+msgid "This password is too short. It must contain at least 8 characters."
+msgstr "Esta contraseña es demasiado corta. Debe contener al menos 8 caracteres."
+
+msgid "Or continue with"
+msgstr "O continuar con"
+
+msgid "Sign in with Google"
+msgstr "Iniciar session con Google"
+
+msgid "Sign in with Facebook"
+msgstr "Iniciar session con Facebook"
+
+msgid "Sign up with"
+msgstr "Registrarse con"

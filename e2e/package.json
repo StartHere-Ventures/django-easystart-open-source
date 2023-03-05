@@ -1,0 +1,20 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "django:reset_db": "python3 /app/manage.py reset_db --noinput --close-sessions",
+    "django:migrate": "python3 /app/manage.py migrate --noinput",
+    "django:load_all_fixtures": "python3 /app/manage.py loaddata /app/fixtures/*.json && python3 /app/manage.py loaddata /app/fixtures/testing/*.json",
+    "django:load_fixture": "python3 /app/manage.py loaddata"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.5.0"
+  }
+}

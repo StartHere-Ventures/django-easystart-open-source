@@ -1,0 +1,78 @@
+{
+  "name": "django-easystart",
+  "version": "1.0.0",
+  "description": "Django EasyStart",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "runserver": "cross-env PYTHONUNBUFFERED=1 python manage.py runserver 0.0.0.0:8000",
+    "dev": "concurrently npm:start npm:runserver",
+    "test_django": "python manage.py test",
+    "tailwind-prod": "NODE_ENV=production npx tailwindcss -o static/css/tailwind.css",
+    "tailwind": "npx tailwindcss -o static/css/tailwind.css",
+    "start": "npx webpack --progress --config webpack.config.dev.js",
+    "prod": "npx webpack --config webpack.config.js",
+    "build": "concurrently npm:tailwind-prod npm:prod",
+    "lint": "npx eslint \"frontend/src/**/*.{js,vue}\"",
+    "lintfix": "npx eslint \"frontend/src/**/*.{js,vue}\" --fix"
+  },
+  "posthtml": {
+    "recognizeSelfClosing": true
+  },
+  "watchreload": {
+    "files": [
+      "**/*.py",
+      "**/templates/**/*.html"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilfredvasquez/django-ineartia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wilfredvasquez/django-ineartia/issues"
+  },
+  "homepage": "https://github.com/wilfredvasquez/django-ineartia#readme",
+  "dependencies": {
+    "@hcaptcha/vue3-hcaptcha": "^1.0.1",
+    "@headlessui/vue": "^1.6.7",
+    "@heroicons/vue": "^1.0.5",
+    "@iconify/vue": "^3.2.1",
+    "@inertiajs/inertia": "^0.11.0",
+    "@inertiajs/inertia-vue3": "^0.6.0",
+    "@inertiajs/progress": "^0.2.7",
+    "@vuelidate/core": "^2.0.0-alpha.44",
+    "@vuelidate/validators": "^2.0.0-alpha.31",
+    "print-js": "^1.6.0",
+    "regenerator-runtime": "^0.13.9",
+    "vue": "^3.2.38",
+    "vue-recaptcha": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.18.10",
+    "@tailwindcss/forms": "^0.5.2",
+    "@vue/compiler-sfc": "^3.2.38",
+    "@vue/component-compiler-utils": "^3.3.0",
+    "autoprefixer": "10.4.5",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^7.3.0",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.0.0",
+    "eslint": "^8.23.0",
+    "eslint-plugin-vue": "^9.4.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss": "^8.4.16",
+    "postcss-loader": "^7.0.1",
+    "tailwindcss": "^3.1.8",
+    "terser-webpack-plugin": "^5.3.6",
+    "vue-loader": "^17.0.0",
+    "webpack": "^5.74.0",
+    "webpack-bundle-tracker": "^1.6.0",
+    "webpack-cli": "^4.10.0"
+  }
+}

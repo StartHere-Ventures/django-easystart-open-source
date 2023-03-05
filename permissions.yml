@@ -1,0 +1,11 @@
+permissions:
+  - codename: can_view_users
+    name: User - Can view users
+  - codename: can_view_user_detail
+    name: User - Can view user detail
+  - codename: can_edit_user
+    name: User - Can edit user
+  - codename: can_create_user
+    name: User - Can create user
+  - codename: can_management_global_settings
+    name: GlobalSettings - Can view and update global settings

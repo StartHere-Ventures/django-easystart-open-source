@@ -1,0 +1,13 @@
+{% load i18n %}
+{% blocktrans %}Hello from {{ site_name }}!{% endblocktrans %}
+
+{% block content %}
+{% blocktrans with email=user %}We have notified that you accessed your {{ site_name }} account from an unrecognized IP address. Email: {{ email }}{% endblocktrans %}
+{% blocktrans with ip=ip device=device %}
+IP address: {{ ip }}
+{% endblocktrans %}
+
+{% blocktrans %} If you don't recognize this activity, please disable your account and contact our customer support immediately.{% endblocktrans %}
+{% endblock %}
+
+{% blocktrans %}Thank you for using {{ site_name }}!{% endblocktrans %}

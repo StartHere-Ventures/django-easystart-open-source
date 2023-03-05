@@ -1,0 +1,14 @@
+{
+  "baseUrl": "http://applocal:8000",
+  "chromeWebSecurity": false,
+  "env": {
+    "client_credentials": {
+      "email": "client@bitmotto.com",
+      "password": "Qwer.1234"
+    },
+    "manager_credentials": {
+      "email": "manager@bitmotto.com",
+      "password": "Qwer.1234"
+    }
+  }
+}
