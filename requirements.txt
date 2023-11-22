@@ -32,4 +32,4 @@ flower==1.2.0
 django-celery-beat==2.3.0
 pytest-xdist[psutil]==2.5.0
 django-extensions==3.2.0
-PyYAML==6.0
+PyYAML==6.0.1
