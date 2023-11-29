@@ -98,7 +98,7 @@ def test_change_email(mock_email_confirm, auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["success"] == "A confirmation email has been send"
+    assert data["props"]["success"] == "A confirmation email has been send"
 
 
 @pytest.mark.django_db
@@ -119,7 +119,7 @@ def test_change_email_wrong_password(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
     assert data["props"]["errors"]["password"] == ["Wrong password"]
 
 
@@ -143,7 +143,7 @@ def test_change_email_email_already_registered(auto_login_user, create_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
     assert data["props"]["errors"]["email"] == ["This email already registered"]
 
 
@@ -166,7 +166,7 @@ def test_cancel_change_email(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["success"] == "Change email canceled"
+    assert data["props"]["success"] == "Change email canceled"
 
 
 @pytest.mark.django_db
@@ -187,7 +187,7 @@ def test_change_name(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["success"] == "Successful name change"
+    assert data["props"]["success"] == "Successful name change"
 
 
 @pytest.mark.django_db
@@ -208,7 +208,7 @@ def test_change_name_invalid_names(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db
@@ -231,7 +231,7 @@ def test_change_job_title(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["success"] == "Successful job title change"
+    assert data["props"]["success"] == "Successful job title change"
 
 
 @pytest.mark.django_db
@@ -254,7 +254,7 @@ def test_change_job_title_invalid_form(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db
@@ -276,7 +276,7 @@ def test_change_photo(auto_login_user, test_image_file):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["success"] == "Successful photo change"
+    assert data["props"]["success"] == "Successful photo change"
 
 
 @pytest.mark.django_db
@@ -298,7 +298,7 @@ def test_change_photo_invalid_type(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
     assert data["props"]["errors"]["photo"] == [
         "Invalid file type, please choose another one."
     ]
@@ -323,7 +323,7 @@ def test_change_photo_empty_data(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
     assert data["props"]["errors"]["photo"] == ["This field is required."]
 
 
@@ -342,7 +342,7 @@ def test_remove_photo(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["success"] == "Photo successfully removed"
+    assert data["props"]["success"] == "Photo successfully removed"
 
 
 @pytest.mark.django_db
@@ -365,7 +365,7 @@ def test_change_language(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["success"] == "Successful language change"
+    assert data["props"]["success"] == "Successful language change"
 
 
 @pytest.mark.django_db
@@ -388,7 +388,7 @@ def test_change_language_invalid_form(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db
@@ -411,7 +411,7 @@ def test_change_country(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["success"] == "Successful country change"
+    assert data["props"]["success"] == "Successful country change"
 
 
 @pytest.mark.django_db
@@ -434,7 +434,7 @@ def test_change_country_invalid_form(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db
@@ -457,7 +457,7 @@ def test_change_date_format(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["success"] == "Successful date format change"
+    assert data["props"]["success"] == "Successful date format change"
 
 
 @pytest.mark.django_db
@@ -480,7 +480,7 @@ def test_change_date_format_invalid_form(auto_login_user):
     data = response_index.json()
 
     assert response_post.status_code == 302
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db

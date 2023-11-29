@@ -5,8 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_http_methods
-from inertia.share import share, share_flash
-from inertia.views import render_inertia
+from inertia import render, share
 from marshmallow import ValidationError
 
 from apps.accounts import app_settings as account_app_settings
@@ -15,6 +14,7 @@ from apps.accounts import tasks as account_tasks
 from utils.build_dict_language import get_dict_countries, get_dict_language
 from utils.date_formats import DATE_FORMATS
 from utils.decorator import clean_message, json_format_required
+from utils.inertia import share_other_view
 
 from . import app_settings, forms, models, serialiazers
 
@@ -24,7 +24,7 @@ from . import app_settings, forms, models, serialiazers
 @clean_message
 def index(request):
     if bool(request.user.groups.filter(name="customer")):
-        return render_inertia(
+        return render(
             request,
             "Index",
             {},
@@ -67,7 +67,7 @@ def settings(request):
         ),
     }
 
-    return render_inertia(
+    return render(
         request,
         "SettingsIndex",
         props,
@@ -84,18 +84,18 @@ def change_user_email(request):
         try:
             data = email_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share_other_view(request, error="Exists errors on form", errors=err.messages)
         else:
             user = authenticate(
                 request, password=data.get("password"), email=request.user.email
             )
             if not user:
-                share_flash(
+                share_other_view(
                     request,
                     error="Exists errors on form",
                     errors={"password": ["Wrong password"]},
                 )
-                share(request, "message_other_view", True)
+                share(request, message_other_view=True)
                 return redirect("core:index_settings")
 
             if bool(
@@ -103,19 +103,19 @@ def change_user_email(request):
                     id=request.user.id
                 )
             ):
-                share_flash(
+                share_other_view(
                     request,
                     error="Exists errors on form",
                     errors={"email": ["This email already registered"]},
                 )
-                share(request, "message_other_view", True)
+                share(request, message_other_view=True)
                 return redirect("core:index_settings")
 
             can_send = accounts_model.EmailConfirmation.can_send_cooldown_period(
                 data.get("email")
             )
             if not can_send:
-                share_flash(
+                share_other_view(
                     request,
                     error=True,
                     errors={
@@ -139,11 +139,11 @@ def change_user_email(request):
                     email=data.get("email"),
                     change=True,
                 )
-                share_flash(
+                share_other_view(
                     request,
                     success="A confirmation email has been send",
                 )
-        share(request, "message_other_view", True)
+        share(request, message_other_view=True)
 
     return redirect("core:index_settings")
 
@@ -160,7 +160,7 @@ def cancel_change_email(request):
             email_address = accounts_model.EmailAddress.objects.filter(email=email)
             if email_address:
                 email_address.first().delete()
-                share_flash(
+                share_other_view(
                     request,
                     success="Change email canceled",
                 )
@@ -168,7 +168,7 @@ def cancel_change_email(request):
                 accounts_model.EmailConfirmation.can_send_cooldown_period(
                     request.user.email
                 )
-                share(request, "message_other_view", True)
+                share(request, message_other_view=True)
 
     return redirect("core:index_settings")
 
@@ -183,16 +183,16 @@ def change_names(request):
         try:
             data = names_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share_other_view(request, error="Exists errors on form", errors=err.messages)
         else:
             request.user.first_name = data.get("firstName")
             request.user.last_name = data.get("lastName")
             request.user.save()
-            share_flash(
+            share_other_view(
                 request,
                 success="Successful name change",
             )
-        share(request, "message_other_view", True)
+        share(request, message_other_view=True)
 
     return redirect("core:index_settings")
 
@@ -207,16 +207,16 @@ def change_job_title(request):
         try:
             data = job_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share_other_view(request, error="Exists errors on form", errors=err.messages)
         else:
             user_profile = models.UserProfile.objects.get(user=request.user)
             user_profile.job_title = data.get("jobTitle")
             user_profile.save()
-            share_flash(
+            share_other_view(
                 request,
                 success="Successful job title change",
             )
-        share(request, "message_other_view", True)
+        share(request, message_other_view=True)
 
     return redirect("core:index_settings")
 
@@ -231,14 +231,14 @@ def change_photo(request):
             user_profile = models.UserProfile.objects.get(user=request.user)
             user_profile.photo = form.cleaned_data["photo"]
             user_profile.save()
-            share_flash(
+            share_other_view(
                 request,
                 success="Successful photo change",
             )
         else:
-            share_flash(request, error="Exists errors on form", errors=form.errors)
+            share_other_view(request, error="Exists errors on form", errors=form.errors)
 
-        share(request, "message_other_view", True)
+        share(request, message_other_view=True)
 
     return redirect("core:index_settings")
 
@@ -249,12 +249,12 @@ def change_photo(request):
 def remove_photo(request):
     user_profile = models.UserProfile.objects.get(user=request.user)
     user_profile.photo.delete()
-    share_flash(
+    share_other_view(
         request,
         success="Photo successfully removed",
     )
 
-    share(request, "message_other_view", True)
+    share(request, message_other_view=True)
 
     return redirect("core:index_settings")
 
@@ -269,16 +269,16 @@ def change_language(request):
         try:
             data = lang_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share_other_view(request, error="Exists errors on form", errors=err.messages)
         else:
             user_profile = models.UserProfile.objects.get(user=request.user)
             user_profile.language = data.get("language")
             user_profile.save()
-            share_flash(
+            share_other_view(
                 request,
                 success="Successful language change",
             )
-        share(request, "message_other_view", True)
+        share(request, message_other_view=True)
 
     return redirect("core:index_settings")
 
@@ -293,16 +293,16 @@ def change_country(request):
         try:
             data = country_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share_other_view(request, error="Exists errors on form", errors=err.messages)
         else:
             user_profile = models.UserProfile.objects.get(user=request.user)
             user_profile.country = data.get("country")
             user_profile.save()
-            share_flash(
+            share_other_view(
                 request,
                 success="Successful country change",
             )
-        share(request, "message_other_view", True)
+        share(request, message_other_view=True)
 
     return redirect("core:index_settings")
 
@@ -317,16 +317,16 @@ def change_date_format(request):
         try:
             data = date_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share_other_view(request, error="Exists errors on form", errors=err.messages)
         else:
             user_profile = models.UserProfile.objects.get(user=request.user)
             user_profile.date_format = data.get("dateFormat")
             user_profile.save()
-            share_flash(
+            share_other_view(
                 request,
                 success="Successful date format change",
             )
-        share(request, "message_other_view", True)
+        share(request, message_other_view=True)
 
     return redirect("core:index_settings")
 
@@ -341,7 +341,7 @@ def error_404(request, exception=None):
     except (AttributeError, IndexError):
         pass
 
-    return render_inertia(
+    return render(
         request,
         "404Error",
         {},
@@ -350,7 +350,7 @@ def error_404(request, exception=None):
 
 @require_http_methods(["GET"])
 def error_400(request, exception=None):
-    return render_inertia(
+    return render(
         request,
         "400Error",
         {},
@@ -359,7 +359,7 @@ def error_400(request, exception=None):
 
 @require_http_methods(["GET"])
 def error_403(request, exception=None):
-    return render_inertia(
+    return render(
         request,
         "403Error",
         {},
@@ -368,7 +368,7 @@ def error_403(request, exception=None):
 
 @require_http_methods(["GET"])
 def error_500(request):
-    return render_inertia(
+    return render(
         request,
         "500Error",
         {},

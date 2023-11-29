@@ -49,7 +49,7 @@ def test_login_view_wrong_credentials_authenticate_user(inertia_client, create_u
     data = response.json()
 
     assert response.status_code == 200
-    assert data["props"]["flash"]["error"] == "Invalid email or password"
+    assert data["props"]["error"] == "Invalid email or password"
 
 
 @pytest.mark.django_db
@@ -67,7 +67,7 @@ def test_login_view_empty_email_or_password_authenticate_user(
     data = response.json()
 
     assert response.status_code == 200
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db
@@ -127,7 +127,7 @@ def test_register_view_empty_email_or_password_signup_user(inertia_client):
     data = response.json()
 
     assert response.status_code == 200
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db
@@ -174,7 +174,7 @@ def test_email_verification_sent_email_is_empty(inertia_client):
     data = response.json()
 
     assert response.status_code == 200
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db
@@ -189,7 +189,7 @@ def test_email_verification_sent_with_email_not_registered(inertia_client):
     data = response.json()
 
     assert response.status_code == 200
-    assert data["props"]["flash"]["error"] == "This email is not registered"
+    assert data["props"]["error"] == "This email is not registered"
 
 
 @pytest.mark.django_db
@@ -263,7 +263,7 @@ def test_password_reset_email_is_empty(inertia_client):
     data = response.json()
 
     assert response.status_code == 200
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db
@@ -278,7 +278,7 @@ def test_password_reset_with_email_not_registered(inertia_client):
     data = response.json()
 
     assert response.status_code == 200
-    assert data["props"]["flash"]["error"] == "This email is not registered"
+    assert data["props"]["error"] == "This email is not registered"
 
 
 @pytest.mark.django_db
@@ -352,7 +352,7 @@ def test_password_reset_from_key_with_valid_key_and_empty_password(
     data = response.json()
 
     assert response.status_code == 200
-    assert data["props"]["flash"]["error"] == "Exists errors on form"
+    assert data["props"]["error"] == "Exists errors on form"
 
 
 @pytest.mark.django_db
@@ -400,7 +400,7 @@ def test_change_password_send_email_with_instructions(
     assert response.status_code == 200
     assert data["component"] == "ChangePassword"
     assert (
-        data["props"]["flash"]["success"]
+        data["props"]["success"]
         == "An email has been sent with instructions to reset your password"
     )
 

@@ -264,7 +264,7 @@ class TestUserChangeStatus:
         assert response.status_code == 200
 
         data = response.json()
-        assert data["props"]["flash"]["success"] == "Successful status change"
+        assert data["props"]["success"] == "Successful status change"
 
         # Verify change of status
         common_user = core_models.CustomUser.objects.get(id=common_user.id)
@@ -324,8 +324,9 @@ class TestUserChangeStatus:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
 
@@ -349,7 +350,7 @@ class TestUserChangeStatus:
             assert response.status_code == 200
 
             data = response.json()
-            assert data["props"]["flash"]["success"] == "Successful status change"
+            assert data["props"]["success"] == "Successful status change"
 
             # Verify change of status
             common_user = core_models.CustomUser.objects.get(id=common_user.id)
@@ -407,7 +408,7 @@ class TestUserResetPassword:
         assert response.status_code == 200
 
         data = response.json()
-        assert data["props"]["flash"]["success"] == "Email sent"
+        assert data["props"]["success"] == "Email sent"
 
     @pytest.mark.django_db
     def test_manager_invalid_id(self, auto_login_manager_user):
@@ -463,8 +464,9 @@ class TestUserResetPassword:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
 
@@ -486,7 +488,7 @@ class TestUserResetPassword:
             assert response.status_code == 200
 
             data = response.json()
-            assert data["props"]["flash"]["success"] == "Email sent"
+            assert data["props"]["success"] == "Email sent"
         else:
             assert response.status_code == 200
 
@@ -545,13 +547,13 @@ class TestUserChangeNames:
         common_user = core_models.CustomUser.objects.get(id=common_user.id)
 
         if first_name and last_name:
-            assert data["props"]["flash"]["success"] == "Successful name change"
+            assert data["props"]["success"] == "Successful name change"
 
             # Verify names changed
             assert common_user.first_name == first_name
             assert common_user.last_name == last_name
         else:
-            assert data["props"]["flash"]["error"] == "Exists errors on form"
+            assert data["props"]["error"] == "Exists errors on form"
 
             # Verify names did not change
             assert common_user.first_name == "Common"
@@ -617,8 +619,9 @@ class TestUserChangeNames:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
 
@@ -645,7 +648,7 @@ class TestUserChangeNames:
 
             data = response.json()
 
-            assert data["props"]["flash"]["success"] == "Successful name change"
+            assert data["props"]["success"] == "Successful name change"
 
             # Verify names changed
             assert common_user.first_name == "John"
@@ -723,12 +726,12 @@ class TestUserChangeJobTitle:
         profile = core_models.UserProfile.objects.get(user=common_user)
 
         if job_title:
-            assert data["props"]["flash"]["success"] == "Successful job title change"
+            assert data["props"]["success"] == "Successful job title change"
 
             # Verify job title changed
             assert profile.job_title == job_title
         else:
-            assert data["props"]["flash"]["error"] == "Exists errors on form"
+            assert data["props"]["error"] == "Exists errors on form"
 
             # Verify job title did not change
             assert profile.job_title == initial_job_title
@@ -796,8 +799,9 @@ class TestUserChangeJobTitle:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
 
@@ -828,7 +832,7 @@ class TestUserChangeJobTitle:
 
             data = response.json()
 
-            assert data["props"]["flash"]["success"] == "Successful job title change"
+            assert data["props"]["success"] == "Successful job title change"
 
             # Verify job title changed
             assert profile.job_title == "Developer"
@@ -910,12 +914,12 @@ class TestUserChangeLanguage:
         profile = core_models.UserProfile.objects.get(user=common_user)
 
         if language:
-            assert data["props"]["flash"]["success"] == "Successful language change"
+            assert data["props"]["success"] == "Successful language change"
 
             # Verify language changed
             assert profile.language == language
         else:
-            assert data["props"]["flash"]["error"] == "Exists errors on form"
+            assert data["props"]["error"] == "Exists errors on form"
 
             # Verify language did not change
             assert profile.language == initial_language
@@ -983,8 +987,9 @@ class TestUserChangeLanguage:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
 
@@ -1015,7 +1020,7 @@ class TestUserChangeLanguage:
 
             data = response.json()
 
-            assert data["props"]["flash"]["success"] == "Successful language change"
+            assert data["props"]["success"] == "Successful language change"
 
             # Verify language changed
             assert profile.language == "es"
@@ -1094,12 +1099,12 @@ class TestUserChangeCountry:
         profile = core_models.UserProfile.objects.get(user=common_user)
 
         if country:
-            assert data["props"]["flash"]["success"] == "Successful country change"
+            assert data["props"]["success"] == "Successful country change"
 
             # Verify country changed
             assert profile.country == country
         else:
-            assert data["props"]["flash"]["error"] == "Exists errors on form"
+            assert data["props"]["error"] == "Exists errors on form"
 
             # Verify country did not change
             assert profile.country == initial_country
@@ -1167,8 +1172,9 @@ class TestUserChangeCountry:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
 
@@ -1199,7 +1205,7 @@ class TestUserChangeCountry:
 
             data = response.json()
 
-            assert data["props"]["flash"]["success"] == "Successful country change"
+            assert data["props"]["success"] == "Successful country change"
 
             # Verify country changed
             assert profile.country == "VE"
@@ -1286,12 +1292,12 @@ class TestUserChangeDateFormat:
         profile = core_models.UserProfile.objects.get(user=common_user)
 
         if date_format:
-            assert data["props"]["flash"]["success"] == "Successful date format change"
+            assert data["props"]["success"] == "Successful date format change"
 
             # Verify date format changed
             assert profile.date_format == date_format
         else:
-            assert data["props"]["flash"]["error"] == "Exists errors on form"
+            assert data["props"]["error"] == "Exists errors on form"
 
             # Verify date format did not change
             assert profile.date_format == initial_date_format
@@ -1359,10 +1365,12 @@ class TestUserChangeDateFormat:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
+
 
         common_user = create_user(
             email="commonuser@test.com", first_name="Common", last_name="User"
@@ -1391,7 +1399,7 @@ class TestUserChangeDateFormat:
 
             data = response.json()
 
-            assert data["props"]["flash"]["success"] == "Successful date format change"
+            assert data["props"]["success"] == "Successful date format change"
 
             # Verify date format changed
             assert profile.date_format == "MM/DD/YY"
@@ -1462,7 +1470,7 @@ class TestUserChangePhoto:
 
         data = response.json()
 
-        assert data["props"]["flash"]["success"] == "Successful photo change"
+        assert data["props"]["success"] == "Successful photo change"
 
         profile = core_models.UserProfile.objects.filter(user=common_user).first()
         assert profile is not None
@@ -1511,7 +1519,7 @@ class TestUserChangePhoto:
         assert profile is not None
         assert not profile.photo
 
-        assert data["props"]["flash"]["error"] == "Exists errors on form"
+        assert data["props"]["error"] == "Exists errors on form"
         assert data["props"]["errors"]
 
         if mode == "invalid_file":
@@ -1542,7 +1550,7 @@ class TestUserChangePhoto:
 
         data = response.json()
 
-        assert data["props"]["flash"]["error"]
+        assert data["props"]["error"]
         assert data["props"]["errors"] == "This user does not exist"
 
     @pytest.mark.django_db
@@ -1589,8 +1597,9 @@ class TestUserChangePhoto:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
 
@@ -1622,7 +1631,7 @@ class TestUserChangePhoto:
             assert response.status_code == 200
 
             data = response.json()
-            assert data["props"]["flash"]["success"] == "Successful photo change"
+            assert data["props"]["success"] == "Successful photo change"
 
             assert profile.photo
             assert profile.get_photo().startswith("data:image/png;base64,")
@@ -1690,7 +1699,7 @@ class TestUserRemovePhoto:
 
         data = response.json()
 
-        assert data["props"]["flash"]["success"] == "Photo successfully removed"
+        assert data["props"]["success"] == "Photo successfully removed"
 
         profile = core_models.UserProfile.objects.filter(user=common_user).first()
         assert profile is not None
@@ -1714,7 +1723,7 @@ class TestUserRemovePhoto:
 
         data = response.json()
 
-        assert data["props"]["flash"]["error"]
+        assert data["props"]["error"]
         assert data["props"]["errors"] == "This user does not exist"
 
     @pytest.mark.django_db
@@ -1761,8 +1770,9 @@ class TestUserRemovePhoto:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
 
@@ -1792,7 +1802,7 @@ class TestUserRemovePhoto:
             assert response.status_code == 200
 
             data = response.json()
-            assert data["props"]["flash"]["success"] == "Photo successfully removed"
+            assert data["props"]["success"] == "Photo successfully removed"
 
             assert not profile.photo
         else:
@@ -1861,13 +1871,13 @@ class TestUserChangeGroups:
         common_user = core_models.CustomUser.objects.get(id=common_user.id)
 
         if group and Group.objects.filter(name=group).exists():
-            assert data["props"]["flash"]["success"] == "Successful role change"
+            assert data["props"]["success"] == "Successful role change"
 
             # Verify group changed
             assert common_user.groups.count() == 1
             assert common_user.groups.first().name == group
         else:
-            assert data["props"]["flash"]["error"] == "Exists errors on form"
+            assert data["props"]["error"] == "Exists errors on form"
 
             # Verify group did not change
             assert common_user.groups.count() == 1
@@ -1935,8 +1945,9 @@ class TestUserChangeGroups:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_edit_user")
+            grant_permissions_custom_group(["can_edit_user", "can_view_user_detail"])
             assert user.has_perm("core.can_edit_user")
+            assert user.has_perm("core.can_view_user_detail")
         else:
             assert not user.has_perm("core.can_edit_user")
 
@@ -1965,7 +1976,7 @@ class TestUserChangeGroups:
 
             data = response.json()
 
-            assert data["props"]["flash"]["success"] == "Successful role change"
+            assert data["props"]["success"] == "Successful role change"
 
             # Verify group changed
             assert common_user.groups.count() == 1
@@ -2073,7 +2084,7 @@ class TestUserCreate:
             data = response.json()
 
             # TODO: Show success message
-            assert not data["props"]["flash"]["error"]
+            assert not data["props"]["error"]
 
             assert core_models.CustomUser.objects.filter(email=email).exists()
         else:
@@ -2081,7 +2092,7 @@ class TestUserCreate:
 
             data = response.json()
 
-            error_msg = data["props"]["flash"]["error"]
+            error_msg = data["props"]["error"]
             if error_msg == "User already exist":
                 assert email == common_user.email
             else:
@@ -2176,7 +2187,7 @@ class TestUserCreate:
         inertia_client, user = auto_login_custom_user()
 
         if grant_permission:
-            grant_permissions_custom_group("can_create_user")
+            grant_permissions_custom_group(["can_create_user", "can_view_users"])
             assert user.has_perm("core.can_create_user")
         else:
             assert not user.has_perm("core.can_create_user")
@@ -2203,7 +2214,7 @@ class TestUserCreate:
             data = response.json()
 
             # TODO: Show success message
-            assert not data["props"]["flash"]["error"]
+            assert not data["props"]["error"]
 
             assert core_models.CustomUser.objects.filter(
                 email=post_data["email"]
@@ -2454,7 +2465,7 @@ class TestGlobalSettingsScripts:
 
         data = response.json()
 
-        assert data["props"]["flash"]["success"] == "Scripts saved successfully"
+        assert data["props"]["success"] == "Scripts saved successfully"
 
         global_settings = core_models.GlobalSettings.objects.first()
         assert global_settings is not None
@@ -2479,7 +2490,7 @@ class TestGlobalSettingsScripts:
         data = response.json()
 
         assert data["component"] == "SystemSettingsScripts"
-        assert data["props"]["flash"]["error"] == "Exists errors on form"
+        assert data["props"]["error"] == "Exists errors on form"
 
         assert core_models.GlobalSettings.objects.exists()
 
@@ -2581,7 +2592,7 @@ class TestGlobalSettingsScripts:
 
             data = response.json()
 
-            assert data["props"]["flash"]["success"] == "Scripts saved successfully"
+            assert data["props"]["success"] == "Scripts saved successfully"
 
             global_settings = core_models.GlobalSettings.objects.first()
             assert global_settings is not None
@@ -2662,13 +2673,13 @@ class TestSystemChangeAppName:
             assert global_settings is not None
 
             if app_name:
-                assert data["props"]["flash"]["success"] == "Successful name change"
+                assert data["props"]["success"] == "Successful name change"
                 assert global_settings.name_app == app_name
             else:
-                assert data["props"]["flash"]["error"] == "Exists errors on form"
+                assert data["props"]["error"] == "Exists errors on form"
                 assert global_settings.name_app == "App name"
         else:
-            assert data["props"]["flash"]["error"]
+            assert data["props"]["error"]
             assert data["props"]["errors"] == "There is not a register of settings"
 
     @pytest.mark.django_db
@@ -2732,7 +2743,7 @@ class TestSystemChangeAppName:
             assert response.status_code == 200
 
             data = response.json()
-            assert data["props"]["flash"]["success"] == "Successful name change"
+            assert data["props"]["success"] == "Successful name change"
 
             assert global_settings.name_app == post_data["appName"]
         else:
@@ -2801,15 +2812,15 @@ class TestSystemChangeSessionExpireTime:
 
             if isinstance(session_expire_time, int):
                 assert (
-                    data["props"]["flash"]["success"]
+                    data["props"]["success"]
                     == "Successful session expiration time change"
                 )
                 assert global_settings.session_expire_time == session_expire_time
             else:
-                assert data["props"]["flash"]["error"] == "Exists errors on form"
+                assert data["props"]["error"] == "Exists errors on form"
                 assert global_settings.session_expire_time == 60
         else:
-            assert data["props"]["flash"]["error"]
+            assert data["props"]["error"]
             assert data["props"]["errors"] == "There is not a register of settings"
 
     @pytest.mark.django_db
@@ -2876,7 +2887,7 @@ class TestSystemChangeSessionExpireTime:
 
             data = response.json()
             assert (
-                data["props"]["flash"]["success"]
+                data["props"]["success"]
                 == "Successful session expiration time change"
             )
 
@@ -2940,11 +2951,11 @@ class TestSystemAppLogoChange:
         assert global_settings is not None
 
         if create_global_settings:
-            assert data["props"]["flash"]["success"] == "Successful logo change"
+            assert data["props"]["success"] == "Successful logo change"
             assert global_settings.logo_app
             assert global_settings.get_logo().startswith("data:image/png;base64,")
         else:
-            assert data["props"]["flash"]["error"]
+            assert data["props"]["error"]
             assert data["props"]["errors"] == "There is not a register of settings"
             assert not global_settings.logo_app
 
@@ -2986,7 +2997,7 @@ class TestSystemAppLogoChange:
         assert global_settings is not None
         assert not global_settings.logo_app
 
-        assert data["props"]["flash"]["error"] == "Exists errors on form"
+        assert data["props"]["error"] == "Exists errors on form"
         assert data["props"]["errors"]
 
         if mode == "invalid_file":
@@ -3060,7 +3071,7 @@ class TestSystemAppLogoChange:
             assert response.status_code == 200
 
             data = response.json()
-            assert data["props"]["flash"]["success"] == "Successful logo change"
+            assert data["props"]["success"] == "Successful logo change"
 
             assert global_settings.logo_app
             assert global_settings.get_logo().startswith("data:image/png;base64,")
@@ -3123,10 +3134,10 @@ class TestSystemAppLogoRemove:
         assert global_settings is not None
 
         if create_global_settings:
-            assert data["props"]["flash"]["success"] == "Logo successfully removed"
+            assert data["props"]["success"] == "Logo successfully removed"
             assert not global_settings.logo_app
         else:
-            assert data["props"]["flash"]["error"]
+            assert data["props"]["error"]
             assert data["props"]["errors"] == "There is not a register of settings"
 
     @pytest.mark.django_db
@@ -3195,7 +3206,7 @@ class TestSystemAppLogoRemove:
             assert response.status_code == 200
 
             data = response.json()
-            assert data["props"]["flash"]["success"] == "Logo successfully removed"
+            assert data["props"]["success"] == "Logo successfully removed"
 
             assert not global_settings.logo_app
         else:
@@ -3247,7 +3258,7 @@ class TestSystemActiveRegistration:
         data = response.json()
 
         if initial_value is not None:
-            success_msg = data["props"]["flash"]["success"]
+            success_msg = data["props"]["success"]
             if initial_value is False:
                 assert success_msg == "User registration active"
             else:
@@ -3258,7 +3269,7 @@ class TestSystemActiveRegistration:
             assert global_settings is not None
             assert global_settings.active_registration != initial_value
         else:
-            assert data["props"]["flash"]["error"]
+            assert data["props"]["error"]
             assert data["props"]["errors"] == "There is not a register of settings"
 
     @pytest.mark.django_db
@@ -3314,7 +3325,7 @@ class TestSystemActiveRegistration:
 
             data = response.json()
 
-            assert data["props"]["flash"]["success"] == "User registration deactive"
+            assert data["props"]["success"] == "User registration deactive"
 
             assert not global_settings.active_registration
         else:
