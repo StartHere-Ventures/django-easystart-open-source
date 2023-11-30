@@ -176,14 +176,12 @@ export default {
         lastName: "",
         email: "",
         password: "",
-        captcha: "",
       },
       fieldsErrors: {
         firstName: false,
         lastName: false,
         email: false,
         password: false,
-        captcha: false,
       },
       textErrors: {
         firstName: [],

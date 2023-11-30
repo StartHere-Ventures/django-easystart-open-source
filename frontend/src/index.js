@@ -24,8 +24,8 @@ createInertiaApp({
   id: "app",
   page: JSON.parse(document.getElementById("app").dataset.page),
   resolve: name => import(`./Pages/${pages[name]}`),
-  setup({ el, app, props, plugin }) {
-    const appVue = createApp({ render: () => h(app, props) })
+  setup({ el, App, props, plugin }) {
+    const appVue = createApp({ render: () => h(App, props) })
       .use(plugin)
       .mixin({ methods: { route: customRoute } })
       .component('inertia-link', Link)
