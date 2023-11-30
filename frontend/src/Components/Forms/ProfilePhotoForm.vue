@@ -75,7 +75,7 @@ export default {
       type: String,
       default: ""
     },
-    flash: {
+    success: {
       type: Object,
       default: () => {},
     },
@@ -172,9 +172,9 @@ export default {
               this.error = true
             }
           }
-          if(this.flash.success) {
+          if(this.success) {
             var vue = this;
-            this.$emit('text-notitication', this.flash.success)
+            this.$emit('text-notitication', this.success)
             this.$emit('show-notification', true)
             setTimeout(function () { vue.$emit('show-notification', false) }, 2000)
             this.$emit('close-update-name', true)

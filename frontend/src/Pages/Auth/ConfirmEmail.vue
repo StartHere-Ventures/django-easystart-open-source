@@ -5,8 +5,8 @@
         <div>
           <img
             class="h-20 w-auto"
-            :src="$page.props.globalSettings.appLogo"
-            :alt="$page.props.globalSettings.appName"
+            :src="$page.props.global_settings.appLogo"
+            :alt="$page.props.global_settings.appName"
           >
           <h2 class="mt-6 text-2xl font-extrabold text-gray-900">
             {{ $_("Confirm Email") }}

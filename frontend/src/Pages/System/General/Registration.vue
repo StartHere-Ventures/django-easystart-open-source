@@ -64,7 +64,7 @@ export default {
     SwitchLabel,
   },
   props: {
-    flash: {
+    success: {
       type: Object,
       default: () => { }
     },
@@ -84,9 +84,9 @@ export default {
     }
   },
   mounted (){
-    if(this.flash.success) {
+    if(this.success) {
       var vue = this;
-      this.textNotification = this.flash.success;
+      this.textNotification = this.success;
       this.showNotification = true
       setTimeout(function () { vue.showNotification = false }, 2000)
     }

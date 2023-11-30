@@ -21,6 +21,7 @@ let customRoute = (...args) => {
 InertiaProgress.init();
 
 createInertiaApp({
+  id: "app",
   page: JSON.parse(document.getElementById("app").dataset.page),
   resolve: name => import(`./Pages/${pages[name]}`),
   setup({ el, app, props, plugin }) {

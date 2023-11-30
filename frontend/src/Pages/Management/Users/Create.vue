@@ -174,7 +174,7 @@ export default {
       type: Object,
       default: () => {}
     },
-    flash: {
+    error: {
       type: Object,
       default: () => { }
     },
@@ -275,7 +275,7 @@ export default {
               }
             }
           }
-          if(this.flash.error) { this.errorLogin = true}
+          if(this.error) { this.errorLogin = true}
         }
       })
     },

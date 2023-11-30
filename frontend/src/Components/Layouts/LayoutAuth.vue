@@ -15,8 +15,8 @@
 <script>
 export default {
   created () {
-    if(this.$page.props.userLanguage){
-      this.$setlang(this.$page.props.userLanguage)
+    if(this.$page.props.user_language){
+      this.$setlang(this.$page.props.user_language)
     }
   },
 }

@@ -70,7 +70,7 @@
                 <email-form 
                   :user-email="auth.user.email"
                   :tfa="tfa"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   @close-update-name="editEmail = false"
                   @show-notification="value => showNotification = value"
@@ -109,7 +109,7 @@
                 <names-form 
                   :name="auth.user.firstName"
                   :last="auth.user.lastName"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   @close-update-name="editName = false"
                   @show-notification="value => showNotification = value"
@@ -158,7 +158,7 @@
               >
                 <photo-form 
                   :user-photo="userProfile.photo"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   :size="maxSizeFile"
                   @close-update-name="editPhoto = false"
@@ -208,7 +208,7 @@
               >
                 <job-form 
                   :job="userProfile.job_title"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   @close-update-name="editJob = false"
                   @show-notification="value => showNotification = value"
@@ -268,7 +268,7 @@ export default {
         }
       }
     },
-    flash: {
+    success: {
       type: Object,
       default: () => {}
     },
@@ -308,9 +308,9 @@ export default {
     }
   },
   mounted (){
-    if(this.flash.success) {
+    if(this.success) {
       var vue = this;
-      this.textNotification = this.flash.success;
+      this.textNotification = this.success;
       this.showNotification = true
       setTimeout(function () { vue.showNotification = false }, 2000)
     }
@@ -321,9 +321,9 @@ export default {
         this.$inertia.get(this.route('core:remove_photo'), {
           onStart: () => this.showNotification = false,
           onFinish: () => {
-            if(this.flash.success) {
+            if(this.success) {
               var vue = this;
-              this.textNotification = this.flash.success;
+              this.textNotification = this.success;
               this.showNotification = true
               setTimeout(function () { vue.showNotification = false }, 2000)
             }
@@ -356,9 +356,9 @@ export default {
       this.$inertia.post(this.route('core:cancel_change_email'), {"email": this.unconfirmedEmail}, {
         onStart: () => this.showNotification = false,
         onFinish: () => {
-          if(this.flash.success) {
+          if(this.success) {
             var vue = this;
-            this.textNotification = this.flash.success;
+            this.textNotification = this.success;
             this.showNotification = true
             setTimeout(function () { vue.showNotification = false }, 2000)
           }

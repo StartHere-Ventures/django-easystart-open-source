@@ -99,10 +99,6 @@ export default {
       type: Object,
       default: () => {}
     },
-    flash: {
-      type: Object,
-      default: () => {}
-    },
     errors: {
       type: Object,
       default: () => {}

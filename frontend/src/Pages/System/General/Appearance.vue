@@ -33,7 +33,7 @@
               >
                 <app-name-form 
                   :name="appName"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   @close-update-name="editAppName = false"
                   @show-notification="value => showNotification = value"
@@ -80,7 +80,7 @@
               >
                 <app-logo-form 
                   :app-logo="appLogo"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   @close-update-name="editLogo = false"
                   @show-notification="value => showNotification = value"
@@ -131,7 +131,7 @@ export default {
     'app-logo-form': AppLogoForm
   },
   props: {
-    flash: {
+    success: {
       type: Object,
       default: () => { }
     },
@@ -157,9 +157,9 @@ export default {
     }
   },
   mounted (){
-    if(this.flash.success) {
+    if(this.success) {
       var vue = this;
-      this.textNotification = this.flash.success;
+      this.textNotification = this.success;
       this.showNotification = true
       setTimeout(function () { vue.showNotification = false }, 2000)
     }
@@ -169,9 +169,9 @@ export default {
       this.$inertia.get(this.route('management:system_remove_app_logo'), {
         onStart: () => this.showNotification = false,
         onFinish: () => {
-          if(this.flash.success) {
+          if(this.success) {
             var vue = this;
-            this.textNotification = this.flash.success;
+            this.textNotification = this.success;
             this.showNotification = true
             setTimeout(function () { vue.showNotification = false }, 2000)
           }

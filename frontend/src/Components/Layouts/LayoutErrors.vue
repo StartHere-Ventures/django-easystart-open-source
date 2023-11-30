@@ -6,8 +6,8 @@
       >
         <img
           class="mx-auto h-20 w-auto"
-          :src="$page.props.globalSettings.appLogo"
-          :alt="$page.props.globalSettings.appName"
+          :src="$page.props.global_settings.appLogo"
+          :alt="$page.props.global_settings.appName"
         >
       </inertia-link>
     </div>
@@ -36,8 +36,8 @@ export default {
     ArrowNarrowRightIcon
   },
   created() {
-    if(this.$page.props.userLanguage){
-      this.$setlang(this.$page.props.userLanguage)
+    if(this.$page.props.user_language){
+      this.$setlang(this.$page.props.user_language)
     }
   }
 }

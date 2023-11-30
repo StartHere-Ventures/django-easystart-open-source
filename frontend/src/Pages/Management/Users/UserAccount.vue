@@ -34,7 +34,7 @@
                 <language-form 
                   :available-languages="availableLanguages"
                   :language="userProfile.language"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   :url="`/manage/user/${user.user_id}/change/language`"
                   @close-update-name="editLanguage = false"
@@ -72,7 +72,7 @@
                 <country-form 
                   :available-countries="availableCountries"
                   :country="userProfile.country"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   :url="`/manage/user/${user.user_id}/change/country`"
                   @close-update-name="editCountry = false"
@@ -110,7 +110,7 @@
                 <date-format-form 
                   :available-date-formats="availableDateFormats"
                   :date-format="userProfile.date_format"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   :url="`/manage/user/${user.user_id}/change/date-format`"
                   @close-update-name="editDateFormat = false"
@@ -148,7 +148,7 @@
                 <user-group-form 
                   :available-groups="availableGroups"
                   :group="user.groups[0].name"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   :url="`/manage/user/${user.user_id}/change/group`"
                   @close-update-name="editUserGroup = false"
@@ -196,7 +196,7 @@ export default {
       type: Object,
       default: () => {}
     },
-    flash: {
+    success: {
       type: Object,
       default: () => {}
     },

@@ -80,7 +80,7 @@ export default {
       type: String,
       default: ""
     },
-    flash: {
+    success: {
       type: Object,
       default: () => {},
     },
@@ -145,8 +145,8 @@ export default {
               }
             }
           }
-          if(this.flash.success) {
-            this.$emit('text-notitication', this.flash.success)
+          if(this.success) {
+            this.$emit('text-notitication', this.success)
             this.$emit('show-notification', true)
             this.$emit('close-update-name', true)
             window.location.reload();
