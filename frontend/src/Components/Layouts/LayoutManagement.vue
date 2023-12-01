@@ -61,8 +61,8 @@
                 >
                   <img
                     class="h-16 w-auto"
-                    :src="$page.props.globalSettings.appLogo"
-                    :alt="$page.props.globalSettings.appName"
+                    :src="$page.props.global_settings.appLogo"
+                    :alt="$page.props.global_settings.appName"
                   >
                 </inertia-link>
               </div>
@@ -129,8 +129,8 @@
               >
                 <img
                   class="h-16 w-auto"
-                  :src="$page.props.globalSettings.appLogo"
-                  :alt="$page.props.globalSettings.appName"
+                  :src="$page.props.global_settings.appLogo"
+                  :alt="$page.props.global_settings.appName"
                 >
               </inertia-link>
             </div>
@@ -203,7 +203,7 @@
             </button>
             <div class="flex-1 flex justify-center my-auto text-app-900">
               <h1 class="font-medium text-xl">
-                {{ $page.props.globalSettings.appName }}
+                {{ $page.props.global_settings.appName }}
               </h1>
             </div>
           </div>
@@ -362,10 +362,10 @@ export default {
     this.navigation = nav;
   },
   created() {
-    if (this.$page.props.userLanguage){
-      this.$setlang(this.$page.props.userLanguage)
+    if (this.$page.props.user_language){
+      this.$setlang(this.$page.props.user_language)
     }
-    setTimeout(function(){ window.location.reload() }, (this.$page.props.globalSettings.timeExpiredSession * 60 + 5) * 1000);
+    setTimeout(function(){ window.location.reload() }, (this.$page.props.global_settings.timeExpiredSession * 60 + 5) * 1000);
   }
 }
 </script>

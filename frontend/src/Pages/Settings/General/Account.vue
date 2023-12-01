@@ -34,7 +34,7 @@
                 <language-form 
                   :available-languages="availableLanguages"
                   :language="userProfile.language"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   @close-update-name="editLanguage = false"
                   @show-notification="value => showNotification = value"
@@ -71,7 +71,7 @@
                 <country-form 
                   :available-countries="availableCountries"
                   :country="userProfile.country"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   @close-update-name="editCountry = false"
                   @show-notification="value => showNotification = value"
@@ -108,7 +108,7 @@
                 <date-format-form 
                   :available-date-formats="availableDateFormats"
                   :date-format="userProfile.date_format"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   @close-update-name="editDateFormat = false"
                   @show-notification="value => showNotification = value"
@@ -154,7 +154,7 @@ export default {
       type: Object,
       default: () => {}
     },
-    flash: {
+    success: {
       type: Object,
       default: () => {}
     },

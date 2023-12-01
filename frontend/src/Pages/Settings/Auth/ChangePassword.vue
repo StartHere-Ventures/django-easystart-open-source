@@ -86,7 +86,7 @@ export default {
       type: Object,
       default: () => {}
     },
-    flash: {
+    success: {
       type: Object,
       default: () => {}
     }
@@ -107,7 +107,7 @@ export default {
         onFinish: () => {
           this.isSendingConfirmEmail = false;
           this.errorSendConfirmEmail = "";
-          if (this.flash.success) {
+          if (this.success) {
             var vue = this;
             this.showNotification = true;
             this.textNotification = this.$_("Email send successfully");
@@ -124,10 +124,10 @@ export default {
         onStart: () => this.isSendingPasswordReset = true,
         onFinish: () => {
           this.isSendingPasswordReset = false;
-          if (this.flash.success) {
+          if (this.success) {
             var vue = this;
             this.showNotification = true;
-            this.textNotification = this.$_(this.flash.success);
+            this.textNotification = this.$_(this.success);
             setTimeout(function () { vue.showNotification = false }, 2000)
           }
         }

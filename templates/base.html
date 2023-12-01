@@ -19,7 +19,9 @@
     {% body_scripts %}
     {% csrf_token %}
     {{ page|json_script:"page" }}
-    <div id="app"></div>
+    {% block inertia %}
+      <div id="app"></div>
+    {% endblock %}
     {% render_bundle 'main' 'js' attrs='defer async' %}
 
     {% footer_scripts %}

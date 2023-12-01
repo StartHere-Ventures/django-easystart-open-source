@@ -4,7 +4,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.utils import translation
 from django.utils.deprecation import MiddlewareMixin
-from inertia.share import share, share_flash
+from inertia import share
 
 from . import app_settings, models
 
@@ -24,9 +24,9 @@ class CorePropsMiddleware:
             else:
                 language = user_profile.language
             translation.activate(language)
-            share(request, "userLanguage", language)
+            share(request, user_language=language)
         else:
-            share(request, "userLanguage", None)
+            share(request, user_language=None)
 
         global_settings = models.GlobalSettings.objects.first()
         if global_settings:
@@ -45,7 +45,7 @@ class CorePropsMiddleware:
                 "timeExpiredSession": app_settings.SESSION_EXPIRE_TIME,
                 "activeRegistration": True,
             }
-        share(request, "globalSettings", settings)
+        share(request, global_settings=settings)
 
         response = self.get_response(request)
         return response
@@ -74,14 +74,14 @@ class SessionIdleTimeout(MiddlewareMixin):
 
                 if (now - last_activity).seconds > idle_timeout * 60:
                     logout(request)
-                    share_flash(
+                    share(
                         request,
                         error="Your session has been closed due to inactivity",
                         errors={
                             "error": "Your session has been closed due to inactivity"
                         },
                     )
-                    share(request, "message_other_view", True)
+                    share(request, message_other_view=True)
                     return redirect("accounts:login")
 
                 if request.accepts("text/html"):

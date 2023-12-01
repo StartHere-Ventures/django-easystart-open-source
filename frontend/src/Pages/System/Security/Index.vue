@@ -3,7 +3,7 @@
     <template #settings-content>
       <security
         :session-expire-time="globalSettings.timeExpiredSession"
-        :flash="flash"
+        :success="success"
         :errors="errors"
       />
     </template>
@@ -25,7 +25,7 @@ export default {
       type: Object,
       default: () => { }
     },
-    flash: {
+    success: {
       type: Object,
       default: () => { }
     },

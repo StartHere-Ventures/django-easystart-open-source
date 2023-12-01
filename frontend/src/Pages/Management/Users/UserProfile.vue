@@ -46,7 +46,7 @@
                 <names-form 
                   :name="user.firstName"
                   :last="user.lastName"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   :url="`/manage/user/${user.user_id}/change/names`"
                   @close-update-name="editName = false"
@@ -96,7 +96,7 @@
               >
                 <photo-form 
                   :user-photo="userProfile.photo"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   :size="maxSizeFile"
                   :url="`/manage/user/${user.user_id}/change/photo`"
@@ -147,7 +147,7 @@
               >
                 <job-form 
                   :job="userProfile.job_title"
-                  :flash="flash"
+                  :success="success"
                   :errors="errors"
                   :url="`/manage/user/${user.user_id}/change/job`"
                   @close-update-name="editJob = false"
@@ -193,7 +193,7 @@ export default {
       type: Object,
       default: () => {}
     },
-    flash: {
+    success: {
       type: Object,
       default: () => {}
     },
@@ -226,9 +226,9 @@ export default {
     }
   },
   mounted (){
-    if(this.flash.success) {
+    if(this.success) {
       var vue = this;
-      this.textNotification = this.flash.success;
+      this.textNotification = this.success;
       this.showNotification = true
       setTimeout(function () { vue.showNotification = false }, 2000)
     }
@@ -239,9 +239,9 @@ export default {
         this.$inertia.get(this.route('management:user_remove_photo', this.user.user_id), {
           onStart: () => this.showNotification = false,
           onFinish: () => {
-            if(this.flash.success) {
+            if(this.success) {
               var vue = this;
-              this.textNotification = this.flash.success;
+              this.textNotification = this.success;
               this.showNotification = true
               setTimeout(function () { vue.showNotification = false }, 2000)
             }

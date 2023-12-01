@@ -9,18 +9,18 @@
           v-if="errorLogin"
           time="10"
         >
-          {{ $_(flash.error) }}
+          {{ $_(error) }}
         </message>
       </div>
       <div
-        v-show="flash.success"
+        v-show="success"
         class="pb-3 mx-auto w-full max-w-sm lg:w-96"
       >
         <message-success
-          v-if="flash.success"
+          v-if="success"
           time="10"
         >
-          {{ $_(flash.success) }}
+          {{ $_(success) }}
         </message-success>
       </div>
       <div class="mx-auto w-full max-w-sm lg:w-96">
@@ -30,14 +30,14 @@
           >
             <img
               class="h-20 w-auto"
-              :src="$page.props.globalSettings.appLogo"
-              :alt="$page.props.globalSettings.appName"
+              :src="$page.props.global_settings.appLogo"
+              :alt="$page.props.global_settings.appName"
             >
           </inertia-link>
           <h2 class="mt-6 text-2xl font-extrabold text-gray-900">
             {{ $_("Sign in to your account") }}
           </h2>
-          <span v-if="$page.props.globalSettings.activeRegistration">
+          <span v-if="$page.props.global_settings.activeRegistration">
             <p class="mt-2 text-sm text-gray-600">
               {{ $_("Or") }} {{ ' ' }}
               <inertia-link
@@ -168,9 +168,13 @@ export default {
     'message-success': MessageSuccess,
   },
   props: {
-    flash: {
+    error: {
       type: Object,
       default: () => {}
+    },
+    success: {
+      type: Object,
+      default: () => { }
     },
     errors: {
       type: Object,
@@ -210,7 +214,7 @@ export default {
     }
   },
   created (){
-    if(this.flash.error){
+    if(this.error){
       this.errorLogin = true;
     }
   },
@@ -258,7 +262,7 @@ export default {
               }
             }
           }
-          if(this.flash.error) {
+          if(this.error) {
             this.errorLogin = true
           }
         }

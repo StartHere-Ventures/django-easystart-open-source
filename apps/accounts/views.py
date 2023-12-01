@@ -8,12 +8,12 @@ from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_http_methods
-from inertia.share import share, share_flash
-from inertia.views import render_inertia
+from inertia import render, share
 from marshmallow import ValidationError
 
 from apps.core import models as core_models
 from utils.decorator import clean_message, json_format_required
+from utils.inertia import share_other_view
 
 from . import app_settings, models, serializers, tasks, utils
 
@@ -33,7 +33,7 @@ def login_view(request):
         try:
             data = login_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share(request, error="Exists errors on form", errors=err.messages)
         else:
             user = authenticate(
                 request, password=data.get("password"), email=data.get("email")
@@ -50,15 +50,15 @@ def login_view(request):
 
             if user is not None:
                 login(request, user)
-                share_flash(request)
+                share(request)
                 return redirect(app_settings.ACCOUNT_LOGIN_REDIRECT_URL)
             else:
-                share_flash(
+                share(
                     request,
                     error="Invalid email or password",
                 )
 
-    return render_inertia(request, "Login", {})
+    return render(request, "Login", {})
 
 
 @require_http_methods(["GET"])
@@ -83,7 +83,7 @@ def register_view(request):
         try:
             data = register_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share(request, error="Exists errors on form", errors=err.messages)
         else:
             try:
                 user = core_models.CustomUser.create_user(
@@ -93,7 +93,7 @@ def register_view(request):
                     data.get("lastName"),
                 )
             except ValueError as err:
-                share_flash(
+                share(
                     request,
                     error=str(err),
                 )
@@ -119,7 +119,7 @@ def register_view(request):
     props = {
         "paramsPasswordValidator": utils.get_params_password_validator(),
     }
-    return render_inertia(request, "Register", props)
+    return render(request, "Register", props)
 
 
 @require_http_methods(["GET", "POST"])
@@ -131,7 +131,7 @@ def email_verification_sent(request):
         try:
             data = email_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share(request, error="Exists errors on form", errors=err.messages)
         else:
             user = core_models.CustomUser.objects.filter(email=data.get("email"))
             if user:
@@ -142,19 +142,19 @@ def email_verification_sent(request):
                     tasks.email_confirmation(request, user.first(), True)
                     return redirect("accounts:login")
                 else:
-                    share_flash(
+                    share(
                         request,
                         error=_(
                             "Do you need wait {0} min to resend " "confirmation email"
                         ).format(int(app_settings.EMAIL_CONFIRMATION_COOLDOWN / 60)),
                     )
             else:
-                share_flash(
+                share(
                     request,
                     error="This email is not registered",
                 )
 
-    return render_inertia(request, "EmailVerificationSend", {})
+    return render(request, "EmailVerificationSend", {})
 
 
 @require_http_methods(["GET"])
@@ -162,7 +162,7 @@ def email_verification_sent(request):
 def confirm_email(request, key):
     confirmation = models.EmailConfirmation.objects.filter(key=key)
     if not confirmation or confirmation.first().key_expired():
-        return render_inertia(request, "ConfirmEmail", {})
+        return render(request, "ConfirmEmail", {})
 
     confirmation.first().confirm()
     if app_settings.LOGIN_ON_EMAIL_CONFIRMATION:
@@ -181,24 +181,24 @@ def password_reset(request):
         try:
             data = email_schema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share(request, error="Exists errors on form", errors=err.messages)
         else:
             user = core_models.CustomUser.objects.filter(email=data.get("email"))
             if user:
                 tasks.email_password_reset(request, user.first())
-                share(request, "message_other_view", True)
-                share_flash(
+                share(request, message_other_view=True)
+                share_other_view(
                     request,
                     success="An email has been sent with instructions to reset your password",
                 )
                 return redirect("accounts:login")
             else:
-                share_flash(
+                share(
                     request,
                     error="This email is not registered",
                 )
 
-    return render_inertia(request, "PasswordReset", {})
+    return render(request, "PasswordReset", {})
 
 
 @require_http_methods(["GET", "POST"])
@@ -230,15 +230,15 @@ def password_reset_from_key(request, uidb36, key):
         try:
             data = password_shema.loads(request.body)
         except ValidationError as err:
-            share_flash(request, error="Exists errors on form", errors=err.messages)
+            share(request, error="Exists errors on form", errors=err.messages)
         else:
             reset_user.set_password(data.get("password"))
             reset_user.save()
-            share_flash(
+            share_other_view(
                 request,
                 success="Your password has been changed successfully",
             )
-            share(request, "message_other_view", True)
+            share(request, message_other_view=True)
             return redirect("accounts:login")
 
     props = {
@@ -247,7 +247,7 @@ def password_reset_from_key(request, uidb36, key):
         "tokenInvalid": token_invalid,
         "paramsPasswordValidator": utils.get_params_password_validator(),
     }
-    return render_inertia(request, "SetPasswordFromKey", props)
+    return render(request, "SetPasswordFromKey", props)
 
 
 @require_http_methods(["GET", "POST"])
@@ -256,12 +256,12 @@ def password_reset_from_key(request, uidb36, key):
 def change_password(request):
     if request.method == "POST":
         tasks.email_password_reset(request, request.user)
-        share_flash(
+        share(
             request,
             success="An email has been sent with instructions to reset your password",
         )
 
-    return render_inertia(request, "ChangePassword", {})
+    return render(request, "ChangePassword", {})
 
 
 @require_http_methods(["GET"])

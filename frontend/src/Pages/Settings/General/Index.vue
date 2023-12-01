@@ -4,7 +4,7 @@
       <profile
         :auth="auth"
         :tfa="tfa"
-        :flash="flash"
+        :success="success"
         :unconfirmed-email="unconfirmedEmail"
         :user-profile="userProfile"
         :max-size-file="maxSizeFile"
@@ -14,7 +14,7 @@
 
       <account
         :auth="auth"
-        :flash="flash"
+        :success="success"
         :user-profile="userProfile"
         :available-languages="availableLanguages"
         :available-countries="availableCountries"
@@ -51,7 +51,7 @@ export default {
         }
       }
     },
-    flash: {
+    success: {
       type: Object,
       default: () => { }
     },

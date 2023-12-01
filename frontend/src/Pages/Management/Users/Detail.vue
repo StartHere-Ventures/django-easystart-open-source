@@ -14,14 +14,14 @@
       <div class="px-4 py-6 sm:px-6 md:px-0">
         <user-profile
           :user="user"
-          :flash="flash"
+          :success="success"
           :user-profile="user.profile"
           :errors="errors"
         />
 
         <user-account 
           :user="user"
-          :flash="flash"
+          :success="success"
           :user-profile="user.profile"
           :available-languages="availableLanguages"
           :available-countries="availableCountries"
@@ -33,7 +33,6 @@
         <user-security 
           :user="user"
           :tfa-active="tfaActive"
-          :flash="flash"
           :errors="errors"
         />
       </div>
@@ -67,7 +66,7 @@ export default {
       type: Object,
       default: () => {}
     },
-    flash: {
+    success: {
       type: Object,
       default: () => { }
     },
@@ -126,7 +125,7 @@ export default {
       return this.$page.props.auth.user.permissions.includes("core.can_view_user_balance");
     },
     isActiveWalletSettings() {
-      return this.$page.props.globalSettings.activeWallet;
+      return this.$page.props.global_settings.activeWallet;
     },
   },
   created(){

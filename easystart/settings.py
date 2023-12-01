@@ -67,6 +67,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_user_agents.middleware.UserAgentMiddleware",
+    "inertia.middleware.InertiaMiddleware",
     "apps.accounts.middleware.AuthPropsMiddleware",
     "apps.core.middleware.CorePropsMiddleware",
     "apps.core.middleware.SessionIdleTimeout",
@@ -201,6 +202,7 @@ VERSION = 2
 CSRF_COOKIE_NAME = "XSRF-TOKEN"
 CSRF_HEADER_NAME = "HTTP_X_XSRF_TOKEN"
 INERTIA_SHARE = False
+INERTIA_LAYOUT = "base.html"
 
 WEBPACK_LOADER = {
     "DEFAULT": {

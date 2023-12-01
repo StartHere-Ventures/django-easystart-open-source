@@ -2,7 +2,7 @@ Django==4.0.7
 psycopg2-binary==2.9.3
 django-environ==0.9.0
 django-js-routes==0.2.0
-inertia-django==0.3.2
+inertia-django==0.5.3
 django-webpack-loader==1.6.0
 pytest==7.1.2
 pytest-django==4.5.2

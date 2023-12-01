@@ -9,15 +9,15 @@
           v-if="errorEmailVerification"
           time="10"
         >
-          {{ flash.error }}
+          {{ error }}
         </message>
       </div>
       <div class="mx-auto w-full max-w-sm lg:w-96">
         <div>
           <img
             class="h-20 w-auto"
-            :src="$page.props.globalSettings.appLogo"
-            :alt="$page.props.globalSettings.appName"
+            :src="$page.props.global_settings.appLogo"
+            :alt="$page.props.global_settings.appName"
           >
           <h2 class="mt-6 text-2xl font-extrabold text-gray-900">
             {{ $_("Email Verification") }}
@@ -108,7 +108,7 @@ export default {
       type: Object,
       default: () => {}
     },
-    flash: {
+    error: {
       type: Object,
       default: () => {}
     },
@@ -188,7 +188,7 @@ export default {
               }
             }
           }
-          if(this.flash.error) { this.errorEmailVerification = true}
+          if(this.error) { this.errorEmailVerification = true}
         }
       })
     },

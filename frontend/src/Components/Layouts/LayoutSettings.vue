@@ -99,8 +99,8 @@ export default {
       this.tfaSettings = this.$page.props.tfa;
     }
     let ipAuth = false;
-    if(this.$page.props.globalSettings) {
-      ipAuth = this.$page.props.globalSettings.activeIPAuth
+    if(this.$page.props.global_settings) {
+      ipAuth = this.$page.props.global_settings.activeIPAuth
     }
           
     let tabsDefault = this.tabsDefault;
@@ -115,7 +115,7 @@ export default {
       } else if (item.name == "Devices"){
         if(ipAuth) { tabs.push(item)}
       } else if (item.name == "Login Connections"){
-        if(this.$page.props.globalSettings.activeSocialApp) { tabs.push(item) }
+        if(this.$page.props.global_settings.activeSocialApp) { tabs.push(item) }
       } else {
         tabs.push(item)
       }

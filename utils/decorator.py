@@ -3,7 +3,7 @@ from functools import wraps
 
 from django.contrib.auth.decorators import user_passes_test
 from django.http import JsonResponse
-from inertia.share import share, share_flash
+from inertia import share
 
 
 def clean_message(func):
@@ -13,10 +13,16 @@ def clean_message(func):
 
     @wraps(func)
     def wrapper(request, *args, **kwargs):
-        if not request.session["share"].get("message_other_view", False):
-            share_flash(request, error=False, success=False)
-            share(request, "errors", {})
-        share(request, "message_other_view", False)
+        if not request.session.get("message_other_view", False):
+            share(request, error=False, success=False, errors={})
+        else:
+            share(
+                request,
+                success=request.session.get("success", False),
+                error=request.session.get("error", False),
+                errors=request.session.get("errors", {}),
+            )
+        request.session["message_other_view"] = False
 
         return func(request, *args, **kwargs)
 

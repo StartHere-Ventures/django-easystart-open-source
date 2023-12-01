@@ -1,4 +1,4 @@
-from inertia.share import share
+from inertia import share
 
 from apps.core.models import UserProfile
 
@@ -31,8 +31,7 @@ class AuthPropsMiddleware:
 
             share(
                 request,
-                "auth",
-                {
+                auth={
                     "user": {
                         "id": request.user.id,
                         "firstName": request.user.first_name,
@@ -54,8 +53,7 @@ class AuthPropsMiddleware:
         else:
             share(
                 request,
-                "auth",
-                {
+                auth={
                     "user": {
                         "id": "",
                         "firstName": "",

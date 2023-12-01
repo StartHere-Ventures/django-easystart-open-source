@@ -4,12 +4,12 @@
       <appearance
         :app-name="globalSettings.appName"
         :app-logo="globalSettings.appLogo"
-        :flash="flash"
+        :success="success"
         :errors="errors"
       />
 
       <registration
-        :flash="flash"
+        :success="success"
         :errors="errors"
         :registration-active="globalSettings.activeRegistration"
       />
@@ -34,7 +34,7 @@ export default {
       type: Object,
       default: () => { }
     },
-    flash: {
+    success: {
       type: Object,
       default: () => { }
     },
